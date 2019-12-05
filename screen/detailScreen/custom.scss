@@ -1,0 +1,12 @@
+/* import the necessary Bootstrap files */
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+
+$body-bg: #eeeeee;
+
+$theme-colors: (
+  primary: #243B55
+);
+
+@import "bootstrap";
