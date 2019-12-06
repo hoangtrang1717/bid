@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,500&display=swap&subset=vietnamese");
+
+body {
+  font-family: "Cabin", sans-serif;
+  color: white;
+}
+
+.navbar {
+  background-color: white;
+}
+
+#findButton {
+  font-weight: 600;
+  background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+}
+
+#loginBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+}
+
+#loginBtn:hover {
+  background-color: #243b55;
+  color: white;
+}
+
+#followBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+  background-color: white;
+}
+
+.a {
+  color: #243b55;
+  font-weight: 500;
+}
+
+#accordionCategory {
+  width: 25%;
+}
+
+#carouselHotProduct {
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #243b55;
+  font-family: "Cabin", sans-serif;
+  font-weight: 500;
+}
+
+#lisceneTitle {
+  font-size: 12px;
+  color: white;
+}
+
+#liscene {
+  font-size: 12px;
+  color: #5e6366;
+}
+
+.logoContact {
+  margin-top: 30px;
+}
+
+.navbar .navbar-toggler-icon {
+  background-image: url("https://mdbootstrap.com/img/svg/hamburger7.svg?color=243b55");
+}
+
+.headerTitle {
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: 600;
+  color: #243b55;
+}
+
+#detailWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: white;
+  margin-top: 120px;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+.footerText {
+  float: left;
+}
+
+.footerText a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.footerBlock {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
