@@ -1,3 +1,5 @@
+@import url("/styles.css");
+
 h1 {
   font-family: "Cabin", sans-serif;
 }
@@ -8,87 +10,32 @@ body {
 ul {
   margin: 30;
 }
-.navbar-custom {
-  background-color: white;
-}
-.my-font-bold {
-  font-family: Cabin;
-  font-style: normal;
-  font-weight: 600;
-  color: #243b55;
-}
-.button {
-  position: absolute;
-  width: 150px;
-  height: 63px;
-  left: 1707px;
-  top: 57px;
-
-  /* #FFFFFF - White */
-
-  background: #ffffff;
-  border: 3px solid #243b55;
-  border-radius: 9px;
-}
-.btn-outline-custom1 {
-  background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
-  border: 3px solid #243b55;
-  border-radius: 9px;
-  color: white;
-}
-
-.btn.btn-outline-custom2 {
-  background-color: #ffffff;
-  border: 2px solid #243b55;
-  border-radius: 9px;
-  color: #243b55;
-  font-family: Cabin;
-  font-style: normal;
-  font-weight: 600;
-}
-.headerStyle {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.custom-toggler.navbar-toggler {
-  border-color: #243b55;
-}
-.navbar .navbar-toggler-icon {
-  background-image: url("https://mdbootstrap.com/img/svg/hamburger7.svg?color=243b55");
-}
 
 #detailWrap {
   display: flex;
+  flex: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 500px;
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .imageWrap {
-  width: 400px;
-  height: 400px;
   background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
-  margin-left: 50;
+  width: 40%;
 }
 .productInfoWrap {
-  margin-left: 100px;
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
-  width: 900px;
   align-items: baseline;
 }
 .titleTxt {
   font-family: Cabin;
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
-  line-height: 73px;
+  font-size: 2em;
   color: #243b55;
 }
 
@@ -96,6 +43,6 @@ ul {
     font-family: Cabin;
     font-style: normal;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1em;
     color: black
   }

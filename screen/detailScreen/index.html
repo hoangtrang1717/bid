@@ -10,7 +10,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <!--CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css"/>
     <link
       href="https://fonts.googleapis.com/css?family=Cabin:400,900"
       rel="stylesheet"
@@ -28,55 +28,64 @@
 
   <body>
       <script src="../../data/Data.js"></script>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
+      <div id="nav">
+        <nav class="navbar navbar-expand-lg fixed-top">
+          <a class="navbar-brand ml-20" href="#home">
+            <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
+          </a>
           <button
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
-            data-target="#navbarTogglerDemo03"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">
-            <img src="../../logo1.png" alt="Logo" style="width:100px;" />
-          </a>
-          <form class="form-inline">
-            <input
-              class="form-control mr-sm-2 ml-5"
-              type="search"
-              placeholder="Nhập sản phẩm"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-custom1 btn-dark">Tìm kiếm</button>
-          </form>
-          <div
-            class="collapse navbar-collapse"
-            id="navbarTogglerDemo03"
-            style="flex-direction: column; align-items: flex-end; justify-content: center;"
-          >
-            <ul class="navbar-nav mr-5">
-              <li class="nav-item active mr-5">
-                <a class="nav-link" href="#">
-                  <p class="my-font-bold">Trang chủ</p>
-                </a>
-              </li>
-              <li class="nav-item active mr-5">
-                <a class="nav-link" href="#">
-                  <p class="my-font-bold">Liên hệ</p>
-                </a>
-              </li>
-              <li class="nav-item active mr-5">
-                <a href="#"
-                  ><button class="btn btn-outline-custom2">Đăng ký</button></a
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 ml-auto ml-5">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Nhập sản phẩm"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-primary my-2 my-sm-0"
+                id="findButton"
+                type="submit"
+              >
+                Tìm kiếm
+              </button>
+            </form>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active ml-5">
+                <a class="nav-link align-middle" href="#home"
+                  ><p class="headerTitle">Trang chủ</p></a
                 >
+              </li>
+              <li class="nav-item active ml-5">
+                <a class="nav-link align-middle" href="#contact"
+                  ><p class="headerTitle">Liên hệ</p></a
+                >
+              </li>
+              <li class="ml-5">
+                <button
+                  class="btn btn-outline-primary my-2 my-sm-0 p-2"
+                  type="submit"
+                  id="loginBtn"
+                >
+                  Đăng nhập
+                </button>
               </li>
             </ul>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
+
     <div style="background-color: #EAEAEA">
       <div id="detailWrap">
         <div class="imageWrap">
@@ -178,6 +187,74 @@
       </div>
     </div>
 
+    <div>
+      <div id="contact"></div>
+
+      <footer>
+        <div class="footerDiv">
+          <img class="logoContact" src="/logo/logo.png" width="100" alt="" />
+          <ul class="footerBlock">
+            <li class="footerText"><a href="#">Sản phẩm</a></li>
+            <li class="footerText"><a href="#">Đánh giá</a></li>
+            <li class="footerText"><a href="#">Trợ giúp</a></li>
+          </ul>
+          <ul class="footerBlock">
+            <li class="footerText">
+              <a href="#">
+                <img
+                  src="/logo/Facebook.png"
+                  width="30px"
+                  height="30px"
+                  alt=""
+                />
+              </a>
+            </li>
+            <li class="footerText">
+              <a href="#">
+                <img src="/logo/Google.png" width="30px" height="30px" alt="" />
+              </a>
+            </li>
+            <li class="footerText">
+              <a href="#">
+                <img
+                  src="/logo/Twitter.png"
+                  width="30px"
+                  height="30px"
+                  alt=""
+                />
+              </a>
+            </li>
+            <li class="footerText">
+              <a href="#">
+                <img
+                  src="/logo/Instagram.png"
+                  width="30px"
+                  height="30px"
+                  alt=""
+                />
+              </a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 mt-5">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Email của bạn"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-primary my-2 my-sm-0"
+              id="followBtn"
+              type="submit"
+            >
+              Theo dõi
+            </button>
+          </form>
+          <p id="lisceneTitle" class="mt-3">Bản quyền thuộc về</p>
+          <p id="liscene">© bidbuy.000webhostapp</p>
+        </div>
+      </footer>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
