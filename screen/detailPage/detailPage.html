@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <script type="module" src="./detailPage.js">
       getData()
-      createProduct()
     </script>
   </head>
 
@@ -297,6 +296,12 @@
         </footer>
       </div>
     </div>
+
+    <script>
+      function sendId(id, type) {
+        window.location = `../detailPage/detailPage.html?id=${id}&type=${type}`;
+      }
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

@@ -9,6 +9,7 @@ function getData() {
     GET[paramName] = paramValue;
   });
   var id = parseInt(GET["id"]);
+  createProduct(GET["type"])
   if (GET["type"] === "0") {
     var name = document.getElementById("productName");
     name.innerText = Phone[id].title;
@@ -26,8 +27,7 @@ function getData() {
     img.src = "../../data" + Phone[id].img3;
     var des = document.getElementById("desTxt");
     des.innerText = Phone[id].description;
-  }
-  else {
+  } else {
     var name = document.getElementById("productName");
     name.innerText = Laptop[id].title;
     var price = document.getElementById("priceNow");
@@ -47,7 +47,13 @@ function getData() {
   }
 }
 
-function createProduct() {
+function createProduct(type) {
+  var Data = [];
+  if (type === "0") {
+    Data = Phone;
+  } else {
+    Data = Laptop;
+  }
   var cardDeck = document.getElementById("cardDeck");
 
   for (var i = 0; i < 5; i++) {
@@ -59,14 +65,14 @@ function createProduct() {
     link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
-    img.src = "../../data" + Phone[i].img1;
+    img.src = "../../data" + Data[i].img1;
     img.alt = "...";
     img.style.width = "100%";
     var cardBody = document.createElement("div");
     cardBody.className = "card-body";
     var name = document.createElement("h5");
     name.className = "card-title";
-    name.textContent = Phone[i].title;
+    name.textContent = Data[i].title;
     var priceBlock = document.createElement("div");
     priceBlock.id = "priceBlock";
     var priceTitle = document.createElement("div");
@@ -76,12 +82,12 @@ function createProduct() {
     var priceNow = document.createElement("h6");
     priceNow.textContent = "Giá hiện tại:";
     var priceNowValue = document.createElement("h6");
-    priceNowValue.textContent = Phone[i].price;
+    priceNowValue.textContent = Data[i].price;
     priceNowValue.style.color = "red";
     var priceBuy = document.createElement("h6");
     priceBuy.textContent = "Giá mua ngay:";
     var priceBuyValue = document.createElement("h6");
-    priceBuyValue.textContent = Phone[i].price;
+    priceBuyValue.textContent = Data[i].price;
     priceBuyValue.style.color = "red";
     var pDate = document.createElement("p");
     pDate.className = "card-text";
@@ -106,4 +112,3 @@ function createProduct() {
 }
 
 getData();
-createProduct();
