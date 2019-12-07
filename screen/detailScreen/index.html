@@ -2,20 +2,21 @@
 <html lang="en">
   <head>
     <title>BID</title>
-    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="/logo/icon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--CSS -->
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Cabin:400,900"
       rel="stylesheet"
       type="text/css"
     />
+    <!-- Js -->
+    <script type="module" src="card.js">
+      getData()
+    </script>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -23,69 +24,66 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    
   </head>
 
   <body>
-      <script src="../../data/Data.js"></script>
-      <div id="nav">
-        <nav class="navbar navbar-expand-lg fixed-top">
-          <a class="navbar-brand ml-20" href="#home">
-            <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0 ml-auto ml-5">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Nhập sản phẩm"
-                aria-label="Search"
-              />
-              <button
-                class="btn btn-primary my-2 my-sm-0"
-                id="findButton"
-                type="submit"
-              >
-                Tìm kiếm
-              </button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active ml-5">
-                <a class="nav-link align-middle" href="#home"
-                  ><p class="headerTitle">Trang chủ</p></a
-                >
-              </li>
-              <li class="nav-item active ml-5">
-                <a class="nav-link align-middle" href="#contact"
-                  ><p class="headerTitle">Liên hệ</p></a
-                >
-              </li>
-              <li class="ml-5">
-                <button
-                  class="btn btn-outline-primary my-2 my-sm-0 p-2"
-                  type="submit"
-                  id="loginBtn"
-                >
-                  Đăng nhập
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+    <div id="nav">
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <a class="navbar-brand ml-20" href="#home">
+          <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="form-inline my-2 my-lg-0 ml-auto ml-5">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Nhập sản phẩm"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-primary my-2 my-sm-0"
+              id="findButton"
+              type="submit"
+            >
+              Tìm kiếm
+            </button>
+          </form>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active ml-5">
+              <a class="nav-link align-middle" href="#home"
+                ><p class="headerTitle">Trang chủ</p></a
+              >
+            </li>
+            <li class="nav-item active ml-5">
+              <a class="nav-link align-middle" href="#contact"
+                ><p class="headerTitle">Liên hệ</p></a
+              >
+            </li>
+            <li class="ml-5">
+              <button
+                class="btn btn-outline-primary my-2 my-sm-0 p-2"
+                type="submit"
+                id="loginBtn"
+              >
+                Đăng nhập
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div style="background-color: #EAEAEA">
       <div id="detailWrap">
         <div class="imageWrap">
@@ -159,30 +157,31 @@
           </div>
         </div>
         <div class="productInfoWrap">
-          <div>
-            <p class="titleTxt">iPhone 11</p>
-          </div>
-          <div style="display:flex; flex-direction: column;">
-            <div
-              style="display:flex; flex-direction: row; justify-content: space-between;"
-            >
+          <p class="titleTxt">iPhone 11</p>
+          <div id="main"></div>
+          <div id="infoWrap">
+            <div id="infoTxtWrap">
               <p class="infoTxt mr-5">Giá hiện tại:</p>
-              <p class="infoTxt" style="color: red;">30.000.000 VNĐ</p>
+              <p class="infoTxt mr-5" style="color: red;">30.000.000 VNĐ</p>
             </div>
-            <div
-              style="display:flex; flex-direction: row; justify-content: space-between;"
-            >
-              <p class="infoTxt  mr-5">Giá mua ngay:</p>
-              <p class="infoTxt" style="color: red">40.000.000 VNĐ</p>
+            <div id="infoTxtWrap">
+              <p class="infoTxt mr-5">Giá mua ngay:</p>
+              <p class="infoTxt mr-5" style="color: red">40.000.000 VNĐ</p>
             </div>
-            <p class="infoTxt">Người ra giá cao nhất:</p>
-            <div
-              style="display:flex; flex-direction: row; justify-content: space-between;"
-            >
-              <p class="infoTxt  mr-5">***** Trang</p>
-              <p class="infoTxt" style="color: red">40.000.000 VNĐ</p>
+            <p class="infoTxt ">Người ra giá cao nhất:</p>
+            <div id="infoTxtWrap">
+              <p class="infoTxt mr-5">***** Trang</p>
+              <p class="infoTxt mr-5" style="color: red">40.000.000 VNĐ</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div id="relativeWrap">
+        <p class="infoTxt ml-4 mt-4">Sản phẩm tương tự</p>
+        <div class="scrolling-wrapper-flexbox">
+            <div id="card2"><h2>Card</h2></div>
+            <div id="card2"><h2>Card</h2></div>
+            <div id="card1"><h2>Card</h2></div>
         </div>
       </div>
     </div>
