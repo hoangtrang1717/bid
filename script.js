@@ -5,11 +5,11 @@ function createProduct() {
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card"
+    card.className = "card";
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "./screen/detailPage/detailPage.html";
+    link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "/data" + Phone[i].img1;
@@ -61,11 +61,11 @@ function createProduct() {
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card"
+    card.className = "card";
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "#";
+    link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "/data" + Phone[i].img1;
@@ -117,11 +117,11 @@ function createProduct() {
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card"
+    card.className = "card";
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "#";
+    link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "/data" + Phone[i].img1;

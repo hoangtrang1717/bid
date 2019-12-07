@@ -1,15 +1,62 @@
-import { Phone } from "../../data/Data.js";
+import { Phone, Laptop } from "../../data/Data.js";
+
+function getData() {
+  var GET = {};
+  var queryString = window.location.search.replace(/^\?/, "");
+  queryString.split(/\&/).forEach(function(keyValuePair) {
+    var paramName = keyValuePair.replace(/=.*$/, ""); // some decoding is probably necessary
+    var paramValue = keyValuePair.replace(/^[^=]*\=/, ""); // some decoding is probably necessary
+    GET[paramName] = paramValue;
+  });
+  var id = parseInt(GET["id"]);
+  if (GET["type"] === "0") {
+    var name = document.getElementById("productName");
+    name.innerText = Phone[id].title;
+    var price = document.getElementById("priceNow");
+    price.innerText = Phone[id].price;
+    price = document.getElementById("priceBuy");
+    price.innerText = Phone[id].price;
+    price = document.getElementById("priceHighest");
+    price.innerText = Phone[id].price;
+    var img = document.getElementById("pImg1");
+    img.src = "../../data" + Phone[id].img1;
+    img = document.getElementById("pImg2");
+    img.src = "../../data" + Phone[id].img2;
+    img = document.getElementById("pImg3");
+    img.src = "../../data" + Phone[id].img3;
+    var des = document.getElementById("desTxt");
+    des.innerText = Phone[id].description;
+  }
+  else {
+    var name = document.getElementById("productName");
+    name.innerText = Laptop[id].title;
+    var price = document.getElementById("priceNow");
+    price.innerText = Laptop[id].price;
+    price = document.getElementById("priceBuy");
+    price.innerText = Laptop[id].price;
+    price = document.getElementById("priceHighest");
+    price.innerText = Laptop[id].price;
+    var img = document.getElementById("pImg1");
+    img.src = "../../data" + Laptop[id].img1;
+    img = document.getElementById("pImg2");
+    img.src = "../../data" + Laptop[id].img2;
+    img = document.getElementById("pImg3");
+    img.src = "../../data" + Laptop[id].img3;
+    var des = document.getElementById("desTxt");
+    des.innerText = Laptop[id].description;
+  }
+}
 
 function createProduct() {
   var cardDeck = document.getElementById("cardDeck");
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card"
+    card.className = "card";
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "#";
+    link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "../../data" + Phone[i].img1;
@@ -58,4 +105,5 @@ function createProduct() {
   }
 }
 
+getData();
 createProduct();

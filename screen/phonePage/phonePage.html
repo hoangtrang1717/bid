@@ -25,7 +25,7 @@
   <body>
     <div id="nav">
       <nav class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand ml-20" href="#home">
+        <a class="navbar-brand ml-20" href="../../Homepage.html">
           <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
         </a>
         <button
@@ -58,12 +58,12 @@
           </form>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active ml-5">
-              <a class="nav-link align-middle" href="#home"
+              <a class="nav-link align-middle" href="../../Homepage.html"
                 ><p class="headerTitle">Trang chủ</p></a
               >
             </li>
             <li class="nav-item active ml-5">
-              <a class="nav-link align-middle" href="#contact"
+              <a class="nav-link align-middle" href="#footerNe"
                 ><p class="headerTitle">Liên hệ</p></a
               >
             </li>
@@ -72,7 +72,7 @@
                 class="btn btn-outline-primary my-2 my-sm-0 p-2"
                 type="submit"
                 id="loginBtn"
-                onclick="createProduct()"
+                onclick="window.location.href='../signInPage/signInPage.html'"
               >
                 Đăng nhập
               </button>
@@ -94,7 +94,7 @@
                 aria-expanded="false"
                 aria-controls="collapseOne"
               >
-                  Điện thoại - Laptop
+                Điện thoại - Laptop
               </a>
             </div>
 
@@ -106,7 +106,11 @@
             >
               <div class="card-body" id="categoryItemWrap">
                 <a href="#" class="categoryItem">Điện thoại</a>
-                <a href="/screen/laptopPage/laptopPage.html" class="categoryItem">Laptop</a>
+                <a
+                  href="/screen/laptopPage/laptopPage.html"
+                  class="categoryItem"
+                  >Laptop</a
+                >
               </div>
             </div>
           </div>
@@ -179,7 +183,7 @@
         <div class="card-deck" id="cardDeck"></div>
       </div>
 
-      <footer>
+      <footer id="footerNe">
         <div class="footerDiv">
           <img class="logoContact" src="/logo/logo.png" width="100" alt="" />
           <ul class="footerBlock">
@@ -244,6 +248,12 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      function sendId(id, type) {
+        window.location = `../detailPage/detailPage.html?id=${id}&type=${type}`;
+      }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
