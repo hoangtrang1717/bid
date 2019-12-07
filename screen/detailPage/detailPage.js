@@ -26,6 +26,7 @@ function getData() {
     img = document.getElementById("pImg3");
     img.src = "../../data" + Phone[id].img3;
     var des = document.getElementById("desTxt");
+    console.log(Phone[id].description)
     des.innerText = Phone[id].description;
   } else {
     var name = document.getElementById("productName");
@@ -43,6 +44,7 @@ function getData() {
     img = document.getElementById("pImg3");
     img.src = "../../data" + Laptop[id].img3;
     var des = document.getElementById("desTxt");
+    
     des.innerText = Laptop[id].description;
   }
 }
