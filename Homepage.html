@@ -25,7 +25,7 @@
   <body>
     <div id="nav">
       <nav class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand ml-20" href="#home">
+        <a class="navbar-brand ml-20" href="#">
           <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
         </a>
         <button
@@ -63,7 +63,7 @@
               >
             </li>
             <li class="nav-item active ml-5">
-              <a class="nav-link align-middle" href="#contact"
+              <a class="nav-link align-middle" href="#footerNe"
                 ><p class="headerTitle">Liên hệ</p></a
               >
             </li>
@@ -94,7 +94,7 @@
                 aria-expanded="false"
                 aria-controls="collapseOne"
               >
-                  Điện thoại - Laptop
+                Điện thoại - Laptop
               </a>
             </div>
 
@@ -105,8 +105,14 @@
               data-parent="#accordionCategory"
             >
               <div class="card-body" id="categoryItemWrap">
-                <a href="/screen/phonePage/phonePage.html" class="categoryItem">Điện thoại</a>
-                <a href="/screen/laptopPage/laptopPage.html" class="categoryItem">Laptop</a>
+                <a href="/screen/phonePage/phonePage.html" class="categoryItem"
+                  >Điện thoại</a
+                >
+                <a
+                  href="/screen/laptopPage/laptopPage.html"
+                  class="categoryItem"
+                  >Laptop</a
+                >
               </div>
             </div>
           </div>
@@ -183,7 +189,7 @@
         <div class="card-deck" id="cardDeck3"></div>
       </div>
 
-      <footer>
+      <footer id="footerNe">
         <div class="footerDiv">
           <img class="logoContact" src="/logo/logo.png" width="100" alt="" />
           <ul class="footerBlock">
@@ -248,6 +254,12 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      function sendId(id, type) {
+        window.location = `./screen/detailPage/detailPage.html?id=${id}&type=${type}`;
+      }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

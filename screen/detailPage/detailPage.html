@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <script type="module" src="./detailPage.js">
+      getData()
       createProduct()
     </script>
   </head>
@@ -28,7 +29,7 @@
     <div>
       <div id="nav">
         <nav class="navbar navbar-expand-lg fixed-top">
-          <a class="navbar-brand ml-20" href="#home">
+          <a class="navbar-brand ml-20" href="../../Homepage.html">
             <img src="/logo/logo1.png" width="100px" height="90px" alt="" />
           </a>
           <button
@@ -66,7 +67,7 @@
                 >
               </li>
               <li class="nav-item active ml-5">
-                <a class="nav-link align-middle" href="#contact"
+                <a class="nav-link align-middle" href="#footerNe"
                   ><p class="headerTitle">Liên hệ</p></a
                 >
               </li>
@@ -75,6 +76,7 @@
                   class="btn btn-outline-primary my-2 my-sm-0 p-2"
                   type="submit"
                   id="loginBtn"
+                  onclick="window.location.href='../signInPage/signInPage.html'"
                 >
                   Đăng nhập
                 </button>
@@ -110,6 +112,7 @@
                 <div class="carousel-item active">
                   <img
                     class="d-block w-100"
+                    id="pImg1"
                     src="../../data/image/Ip11_tim.png"
                     alt="First slide"
                   />
@@ -117,6 +120,7 @@
                 <div class="carousel-item">
                   <img
                     class="d-block w-100"
+                    id="pImg2"
                     src="../../data/image/Ip11_trang.png"
                     alt="Second slide"
                   />
@@ -124,6 +128,7 @@
                 <div class="carousel-item">
                   <img
                     class="d-block w-100"
+                    id="pImg3"
                     src="../../data/image/Ip11_xanh.png"
                     alt="Third slide"
                   />
@@ -156,22 +161,26 @@
             </div>
           </div>
           <div class="productInfoWrap">
-            <h4>Iphone 11</h4>
+            <h4 id="productName">Iphone 11</h4>
             <div id="priceBlock">
               <div id="priceText">
                 <h6 class="titleTxt mr-3">Giá hiện tại:</h6>
-                <h6 class="titleTxt mr-3" style="color: red;">
+                <h6 class="titleTxt mr-3" id="priceNow" style="color: red;">
                   30.000.000 VNĐ
                 </h6>
               </div>
               <div id="priceText">
                 <h6 class="titleTxt mr-3">Giá mua ngay:</h6>
-                <h6 class="titleTxt mr-3" style="color: red">40.000.000 VNĐ</h6>
+                <h6 class="titleTxt mr-3" id="priceBuy" style="color: red">
+                  40.000.000 VNĐ
+                </h6>
               </div>
               <h6 class="titleTxt mt-3">Người ra giá cao nhất:</h6>
               <div id="priceText">
                 <h6 class="titleTxt mr-3">***** Trang</h6>
-                <h6 class="titleTxt mr-3" style="color: red">40.000.000 VNĐ</h6>
+                <h6 class="titleTxt mr-3" id="priceHighest" style="color: red">
+                  40.000.000 VNĐ
+                </h6>
               </div>
             </div>
           </div>
@@ -193,32 +202,47 @@
           </div>
           </div>
         <div id="descriptBlock">
+          <h5 class="ml-3 mt-3">Mô tả sản phẩm</h5>
+          <p class="desTxt">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+        <div id="descriptBlock">
           <div class="descriptTitle">
-                <h5>Mô tả sản phẩm</h5>
-                <p>Đăng 3 ngày trước</p>
+            <h5>Mô tả sản phẩm</h5>
+            <p>Đăng 3 ngày trước</p>
           </div>
-        <div>
+          <div>
             <p class="desTxt">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of type
-              and scrambled it to make a type specimen book. It has survived not
-              only five centuries, but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s
-              with the release of Letraset sheets containing Lorem Ipsum passages,
-              and more recently with desktop publishing software like Aldus
-              PageMaker including versions of Lorem Ipsum.
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
             </p>
           </div>
-          </div>
-        
+        </div>
+
         <div id="productBlock">
           <h5 class="ml-3 mt-3 mb-3">Sản phẩm tương tự</h5>
           <div class="card-deck" id="cardDeck"></div>
         </div>
       </div>
 
-      <div>
+      <div id="footerNe">
         <footer>
           <div class="footerDiv">
             <img class="logoContact" src="/logo/logo.png" width="100" alt="" />

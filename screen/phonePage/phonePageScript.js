@@ -9,7 +9,7 @@ function createProduct() {
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "#";
+    link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "../../data" + Phone[i].img1;
