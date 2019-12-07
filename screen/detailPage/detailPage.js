@@ -9,7 +9,7 @@ function getData() {
     GET[paramName] = paramValue;
   });
   var id = parseInt(GET["id"]);
-  createProduct(GET["type"])
+  createProduct(GET["type"]);
   if (GET["type"] === "0") {
     var name = document.getElementById("productName");
     name.innerText = Phone[id].title;
@@ -26,7 +26,7 @@ function getData() {
     img = document.getElementById("pImg3");
     img.src = "../../data" + Phone[id].img3;
     var des = document.getElementById("desTxt");
-    console.log(Phone[id].description)
+    console.log(Phone[id].description);
     des.innerText = Phone[id].description;
   } else {
     var name = document.getElementById("productName");
@@ -44,17 +44,20 @@ function getData() {
     img = document.getElementById("pImg3");
     img.src = "../../data" + Laptop[id].img3;
     var des = document.getElementById("desTxt");
-    
+
     des.innerText = Laptop[id].description;
   }
 }
 
 function createProduct(type) {
   var Data = [];
+  var pType = 0;
   if (type === "0") {
     Data = Phone;
+    pType = 0;
   } else {
     Data = Laptop;
+    pType = 1;
   }
   var cardDeck = document.getElementById("cardDeck");
 
@@ -64,7 +67,8 @@ function createProduct(type) {
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
-    link.href = "javascript:sendId(" + i.toString() + ",0)";
+    link.href =
+      "javascript:sendId(" + i.toString() + "," + pType.toString() + ")";
     var img = document.createElement("img");
     img.className = "card-img-top";
     img.src = "../../data" + Data[i].img1;
