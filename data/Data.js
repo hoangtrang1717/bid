@@ -182,10 +182,10 @@ var AsusStrixG531GT = {
     title:"Asus Strix G531GT",
     price: "28.990.000 VNĐ",
     desciption: "CPU :	Intel, Core i7/n RAM :	8 GB, DDR4/n Ổ cứng : SSD, 512GB/n Màn hình : 15.6 inchs /n Card màn hình : GTX1650, Card rời/n Cổng kết nối :	LAN : 10/100/1000 Mbps, WIFI : 802.11ac/n Hệ điều hành : windows 10 home single language/n Trọng lượng : 2.4 kg/n Kích thước : 36 x 27 x 2.58 cm (W x D x H)/n Xuất xứ : Trung Quốc /n Năm sản xuất : 2019",
-    img1: "/images/asus-strix-g531gt-den-1.png",
-    img2: "/images/asus-strix-g531gt-den-2.png",
-    img3: "/images/asus-strix-g531gt-den-3.png",
-    img4: "/images/asus-strix-g531gt-den-4.png"
+    img1: "/image/asus-strix-g531gt-den-1.png",
+    img2: "/image/asus-strix-g531gt-den-2.png",
+    img3: "/image/asus-strix-g531gt-den-3.png",
+    img4: "/image/asus-strix-g531gt-den-4.png"
 };
 
 var AsusZenUX = {
