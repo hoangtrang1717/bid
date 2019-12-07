@@ -2,21 +2,14 @@
 <html lang="en">
   <head>
     <title>BID</title>
-    <link rel="shortcut icon" type="image/png" href="/logo/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="../../logo/icon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--CSS -->
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Cabin:400,900"
-      rel="stylesheet"
-      type="text/css"
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <!-- Js -->
-    <script type="module" src="card.js">
-      getData()
-    </script>
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -24,6 +17,10 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script type="module" src="./detailPage.js">
+      createProduct()
+    </script>
   </head>
 
   <body>
@@ -62,7 +59,7 @@
           </form>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active ml-5">
-              <a class="nav-link align-middle" href="#home"
+              <a class="nav-link align-middle" href="../../Homepage.html"
                 ><p class="headerTitle">Trang chủ</p></a
               >
             </li>
@@ -84,7 +81,7 @@
         </div>
       </nav>
     </div>
-    <div style="background-color: #EAEAEA">
+    <div>
       <div id="detailWrap">
         <div class="imageWrap">
           <div
@@ -157,50 +154,31 @@
           </div>
         </div>
         <div class="productInfoWrap">
-<<<<<<< HEAD
-          <p class="titleTxt">iPhone 11</p>
-          <div id="main"></div>
-          <div id="infoWrap">
-            <div id="infoTxtWrap">
-              <p class="infoTxt mr-5">Giá hiện tại:</p>
-              <p class="infoTxt mr-5" style="color: red;">30.000.000 VNĐ</p>
-=======
-          <div>
-            <p class="titleTxt">iPhone 11</p>
-          </div>
-          <div style="display:flex; flex-direction: column;">
-            <div
-              style="display:flex; flex-direction: row; justify-content: space-between;"
-            >
-              <h5 class="infoTxt mr-5">Giá hiện tại:</h5>
-              <p class="infoTxt" style="color: red;">30.000.000 VNĐ</p>
->>>>>>> c92fd1a93154752753aa782e13b3cd0850062e09
+          <h4>Iphone 11</h4>
+          <div id="priceBlock">
+            <div id="priceText">
+              <h6 class="mr-3">Giá hiện tại:</h6>
+              <h6 class="mr-3" style="color: red;">30.000.000 VNĐ</h6>
             </div>
-            <div id="infoTxtWrap">
-              <p class="infoTxt mr-5">Giá mua ngay:</p>
-              <p class="infoTxt mr-5" style="color: red">40.000.000 VNĐ</p>
+            <div id="priceText">
+              <h6 class="mr-3">Giá mua ngay:</h6>
+              <h6 class="mr-3" style="color: red">40.000.000 VNĐ</h6>
             </div>
-            <p class="infoTxt ">Người ra giá cao nhất:</p>
-            <div id="infoTxtWrap">
-              <p class="infoTxt mr-5">***** Trang</p>
-              <p class="infoTxt mr-5" style="color: red">40.000.000 VNĐ</p>
+            <h6>Người ra giá cao nhất:</h6>
+            <div id="priceText">
+              <h6 class="mr-3">***** Trang</h6>
+              <h6 class="mr-3" style="color: red">40.000.000 VNĐ</h6>
             </div>
           </div>
         </div>
       </div>
-      <div id="relativeWrap">
-        <p class="infoTxt ml-4 mt-4">Sản phẩm tương tự</p>
-        <div class="scrolling-wrapper-flexbox">
-            <div id="card2"><h2>Card</h2></div>
-            <div id="card2"><h2>Card</h2></div>
-            <div id="card1"><h2>Card</h2></div>
-        </div>
+      <div id="productBlock">
+        <h5>Sản phẩm tương tự</h5>
+        <div class="card-deck" id="cardDeck"></div>
       </div>
     </div>
 
     <div>
-      <div id="contact"></div>
-
       <footer>
         <div class="footerDiv">
           <img class="logoContact" src="/logo/logo.png" width="100" alt="" />
