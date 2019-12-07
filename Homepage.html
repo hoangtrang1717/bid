@@ -18,6 +18,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="module" src="script.js">
+      createProduct()
+    </script>
   </head>
   <body>
     <div id="nav">
@@ -69,6 +72,7 @@
                 class="btn btn-outline-primary my-2 my-sm-0 p-2"
                 type="submit"
                 id="loginBtn"
+                onclick="createProduct()"
               >
                 Đăng nhập
               </button>
@@ -83,18 +87,15 @@
         <div class="accordion" id="accordionCategory">
           <div class="card">
             <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button
-                  class="btn"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseOne"
-                  aria-expanded="false"
-                  aria-controls="collapseOne"
-                >
-                  Điện thoại - Máy tính bảng
-                </button>
-              </h2>
+              <a
+                id="headerItemTitle"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="false"
+                aria-controls="collapseOne"
+              >
+                  Điện thoại - Laptop
+              </a>
             </div>
 
             <div
@@ -103,36 +104,9 @@
               aria-labelledby="headingOne"
               data-parent="#accordionCategory"
             >
-              <div class="card-body">
-                <a>Iphone 11</a>
-                <a>Iphone 11 Max</a>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h2 class="mb-0">
-                <button
-                  class="btn"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  Laptop
-                </button>
-              </h2>
-            </div>
-            <div
-              id="collapseTwo"
-              class="collapse"
-              aria-labelledby="headingTwo"
-              data-parent="#accordionCategory"
-            >
-              <div class="card-body">
-                <a>vd1</a>
-                <a>vd2</a>
+              <div class="card-body" id="categoryItemWrap">
+                <a href="/screen/phonePage/phonePage.html" class="categoryItem">Điện thoại</a>
+                <a href="/screen/laptopPage/laptopPage.html" class="categoryItem">Laptop</a>
               </div>
             </div>
           </div>
@@ -200,7 +174,14 @@
     </div>
 
     <div>
-      <div id="contact"></div>
+      <div id="productBlock">
+        <h5>Sắp kết thúc</h5>
+        <div class="card-deck" id="cardDeck"></div>
+        <h5>Lượt ra giá cao nhất</h5>
+        <div class="card-deck" id="cardDeck2"></div>
+        <h5>Giá cao nhất</h5>
+        <div class="card-deck" id="cardDeck3"></div>
+      </div>
 
       <footer>
         <div class="footerDiv">
