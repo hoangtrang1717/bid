@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,500&display=swap&subset=vietnamese");
+
+body {
+  font-family: "Cabin", sans-serif;
+  color: white;
+}
+
+.navbar {
+  background-color: white;
+}
+
+#findButton {
+  font-weight: 600;
+  background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+}
+
+#loginBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+}
+
+#loginBtn:hover {
+  background-color: #243b55;
+  color: white;
+}
+
+#followBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+  background-color: white;
+}
+
+.a {
+  color: #243b55;
+  font-weight: 500;
+}
+
+#accordionCategory {
+  width: 25%;
+}
+
+#carouselHotProduct {
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #243b55;
+  font-family: "Cabin", sans-serif;
+  font-weight: 500;
+}
+
+#lisceneTitle {
+  font-size: 12px;
+  color: white;
+}
+
+#liscene {
+  font-size: 12px;
+  color: #5e6366;
+}
+
+.logoContact {
+  margin-top: 30px;
+}
+
+.navbar .navbar-toggler-icon {
+  background-image: url("https://mdbootstrap.com/img/svg/hamburger7.svg?color=243b55");
+}
+
+.headerTitle {
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: 600;
+  color: #243b55;
+}
+
+.footerText {
+  float: left;
+}
+
+.footerText a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.footerBlock {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#productBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1em;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h5 {
+  color: #243b55;
+  font-weight: 600;
+}
+
+h4 {
+  color: #243b55;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  font-weight: 600;
+}
+
+h6 {
+  color: black;
+  text-align: center;
+}
+
+p {
+  color: black;
+  text-align: justify;
+}
+
+.card-title {
+  color: black;
+}
+
+.card-text {
+  color: black;
+}
+
+#priceBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#priceTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#priceText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#productLink {
+  color: transparent;
+}
+
+.paginationNav {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  align-self: center;
+}
+
+.card-deck {
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1em;
+}
+
+.categoryItem {
+  color: #243b55;
+}
+
+.categoryItem:hover {
+  color: #243b55;
+  text-decoration: none;
+}
+
+#categoryItemWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 1em;
+}
+
+#headerItemTitle {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  color: #243b55;
+}
+
+#detailWrap .imageWrap {
+  background: #ffffff;
+  width: 80vh;
+  align-self: center;
+}
+
+.productInfoWrap {
+  margin: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.productCardWrap {
+  display: flex;
+  flex: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.titleTxt {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+#bodyWrap {
+  background-color: #ececec;
+  margin-top: 20vh;
+}
+
+#detailWrap {
+  display: flex;
+  flex: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: white;
+  margin: 1em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#descriptBlock {
+  display: flex;
+  flex: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  background-color: white;
+  margin: 1em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#desTxt {
+  margin: 1em;
+  margin-top: 0 ;
+}
+
+.descriptTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em;
+  margin-bottom: 0;
+}
+#sellerBlock {
+  display: flex;
+  flex: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  background-color: white;
+  margin: 1em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 15vh;
+}
+
+.avaImg {
+  border-radius: 50%;
+  width: 10vh;
+}
+
+.sellerInfoWrap {
+  display: flex;
+  width: 40%;
+  margin: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.checked {
+  color: orange;
+}
+.uncheck {
+  color: black
+}
+
+.table th {
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+}
+
+input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1vh;
+  margin-left: 0 ;
+  width: 100%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  font-family: "Cabin";
+}
+
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #243b55;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+  font-family: "Cabin";
+}
+
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: #243b55;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px 5px 5px 5px;
+  font-family: "Cabin";
+  text-align: center;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #243b55;
+  font-family: "Cabin";
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  font-family: "Cabin";
+}
+
+#btnGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}

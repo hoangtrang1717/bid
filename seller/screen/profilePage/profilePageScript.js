@@ -1,24 +1,20 @@
-import { Phone } from "../data/Data.js";
+import { Phone } from "../../../data/Data.js";
 
 function createProduct() {
   var cardDeck = document.getElementById("cardDeck");
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card";
+    card.className = "card"
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
     link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
-    img.src = "../data" + Phone[i].img1;
+    img.src = "../../../data" + Phone[i].img1;
     img.alt = "...";
     img.style.width = "100%";
-    var cardBadge = document.createElement("span");
-    cardBadge.className = "badge badge-danger";
-    cardBadge.textContent = "NEW";
-    cardBadge.style.width = "3em";
     var cardBody = document.createElement("div");
     cardBody.className = "card-body";
     var name = document.createElement("h5");
@@ -55,25 +51,24 @@ function createProduct() {
     cardBody.appendChild(name);
     cardBody.appendChild(priceBlock);
     cardBody.appendChild(smallDate);
-    card.append(cardBadge);
     card.append(img);
     card.append(cardBody);
     link.append(card);
     cardDeck.appendChild(link);
   }
 
-  var cardDeck2 = document.getElementById("cardDeck2");
+  var cardDeck = document.getElementById("cardDeck2");
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card";
+    card.className = "card"
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
     link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
-    img.src = "../data" + Phone[i].img1;
+    img.src = "../../../data" + Phone[i].img1;
     img.alt = "...";
     img.style.width = "100%";
     var cardBody = document.createElement("div");
@@ -118,18 +113,18 @@ function createProduct() {
     cardDeck2.appendChild(link);
   }
 
-  var cardDeck3 = document.getElementById("cardDeck3");
+  var cardDeck = document.getElementById("cardDeck3");
 
   for (var i = 0; i < 5; i++) {
     var card = document.createElement("div");
-    card.className = "card";
+    card.className = "card"
     card.style.margin = "1em";
     var link = document.createElement("a");
     link.id = "productLink";
     link.href = "javascript:sendId(" + i.toString() + ",0)";
     var img = document.createElement("img");
     img.className = "card-img-top";
-    img.src = "../data" + Phone[i].img1;
+    img.src = "../../../data" + Phone[i].img1;
     img.alt = "...";
     img.style.width = "100%";
     var cardBody = document.createElement("div");

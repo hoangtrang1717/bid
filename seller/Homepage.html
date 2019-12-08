@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>BID</title>
+    <title>BID | Seller</title>
     <link rel="shortcut icon" type="image/png" href="/logo/icon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -68,128 +68,157 @@
               >
             </li>
             <li class="nav-item avatar dropdown ml-5">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" width="50px" class="rounded-circle" alt="avatar image">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                  <a class="dropdown-item" href="./screen/profilePage/profilePage.html">Trang cá nhân</a>
-                  <a class="dropdown-item" href="#">Yêu thích</a>
-                  <a class="dropdown-item" href="../Homepage.html">Đăng xuất</a>
-                </div>
-              </li>
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink-5"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                  width="50px"
+                  class="rounded-circle"
+                  alt="avatar image"
+                />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right dropdown-secondary"
+                aria-labelledby="navbarDropdownMenuLink-5"
+              >
+                <a
+                  class="dropdown-item"
+                  href="./screen/profilePage/profilePage.html"
+                  >Trang cá nhân</a
+                >
+                <a class="dropdown-item" href="#">Yêu thích</a>
+                <a
+                  class="dropdown-item"
+                  href="../Homepage.html"
+                  >Đăng xuất</a
+                >
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
     </div>
 
-    <div style="background-color: #EAEAEA">
-      <div id="detailWrap">
-        <div class="accordion" id="accordionCategory">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <a
-                id="headerItemTitle"
-                data-toggle="collapse"
-                data-target="#collapseOne"
-                aria-expanded="false"
-                aria-controls="collapseOne"
-              >
-                Điện thoại - Laptop
-              </a>
-            </div>
-
-            <div
-              id="collapseOne"
-              class="collapse show"
-              aria-labelledby="headingOne"
-              data-parent="#accordionCategory"
+    <div id="detailWrap">
+      <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+              >Thêm sản phẩm</a
             >
-              <div class="card-body" id="categoryItemWrap">
-                <a href="./screen/phonePage/phonePage.html" class="categoryItem"
-                  >Điện thoại</a
-                >
-                <a
-                  href="./screen/laptopPage/laptopPage.html"
-                  class="categoryItem"
-                  >Laptop</a
-                >
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div class="row mt-3 mb-2 ml-5">
+              <div class="col-sm">
+                <label for="Name">Tên sản phẩm</label>
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="name"
+                  name="Name"
+                  placeholder=""
+                  class="form-control name"
+                />
               </div>
             </div>
+            <div class="row mt-3 mb-2 ml-5">
+              <div class="col-sm">
+                <label>Giá khởi điểm</label>
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="firstPrice"
+                  name="firstPrice"
+                  placeholder=""
+                  class="form-control name"
+                />
+              </div>
+            </div>
+            <div class="row mt-3 mb-2 ml-5">
+              <div class="col-sm">
+                <label>Giá mua ngay</label>
+              </div>
+              <div class="col-sm">
+                <input
+                  type="text"
+                  id="nowPrice"
+                  name="nowPrice"
+                  placeholder=""
+                  class="form-control name"
+                />
+              </div>
+            </div>
+            <div class="row mt-3 mb-2 ml-5">
+                <div class="col-sm">
+                  <label>Bước giá</label>
+                </div>
+                <div class="col-sm">
+                  <input
+                    type="text"
+                    id="stepPrice"
+                    name="stepPrice"
+                    placeholder=""
+                    class="form-control name"
+                  />
+                </div>
+              </div>
+            <div class="row mt-3 mb-2 ml-5">
+              <div class="col-sm">
+                <label>Mô tả sản phẩm</label>
+              </div>
+              <div class="col-sm">
+                <textarea
+                  type="text"
+                  id="description"
+                  name="description"
+                  class="form-control description"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row mt-3 mb-2 ml-5">
+              <label class="col-sm" for="exampleInputFile">Ảnh</label>
+              <div class="custom-file mt-2">
+                  <input type="file" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Thêm ảnh</label>
+                </div>
+                <div class="custom-file mt-2">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Thêm ảnh</label>
+                  </div>
+                  <div class="custom-file mt-2">
+                      <input type="file" class="custom-file-input" id="customFile">
+                      <label class="custom-file-label" for="customFile">Thêm ảnh</label>
+                    </div>
+            </div>
+            <div class="row justify-content-md-center">
+              <input type="button" value="Thêm" />
+            </div>
           </div>
-        </div>
-        <div
-          id="carouselHotProduct"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <ol class="carousel-indicators">
-            <li
-              data-target="#carouselHotProduct"
-              data-slide-to="0"
-              class="active"
-            ></li>
-            <li data-target="#carouselHotProduct" data-slide-to="1"></li>
-            <li data-target="#carouselHotProduct" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="/data/image/Ip 11promax_den.png"
-                class="d-block mx-auto"
-                alt="..."
-                height="300px"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/data/image/Ip 11promax_vang.png"
-                class="d-block mx-auto"
-                alt="..."
-                height="300px"
-              />
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/data/image/Ip11_tim.png"
-                class="d-block mx-auto"
-                alt="..."
-                height="300px"
-              />
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#carouselHotProduct"
-            role="button"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Trước</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#carouselHotProduct"
-            role="button"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Sau</span>
-          </a>
         </div>
       </div>
     </div>
-
     <div>
-      <div id="productBlock">
-        <h5>Sắp kết thúc</h5>
-        <div class="card-deck" id="cardDeck"></div>
-        <h5>Lượt ra giá cao nhất</h5>
-        <div class="card-deck" id="cardDeck2"></div>
-        <h5>Giá cao nhất</h5>
-        <div class="card-deck" id="cardDeck3"></div>
-      </div>
-
       <footer id="footerNe">
         <div class="footerDiv">
           <img class="logoContact" src="/logo/logo.png" width="100" alt="" />

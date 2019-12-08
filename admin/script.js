@@ -15,10 +15,6 @@ function createProduct() {
     img.src = "../data" + Phone[i].img1;
     img.alt = "...";
     img.style.width = "100%";
-    var cardBadge = document.createElement("span");
-    cardBadge.className = "badge badge-danger";
-    cardBadge.textContent = "NEW";
-    cardBadge.style.width = "3em";
     var cardBody = document.createElement("div");
     cardBody.className = "card-body";
     var name = document.createElement("h5");
@@ -55,7 +51,6 @@ function createProduct() {
     cardBody.appendChild(name);
     cardBody.appendChild(priceBlock);
     cardBody.appendChild(smallDate);
-    card.append(cardBadge);
     card.append(img);
     card.append(cardBody);
     link.append(card);
