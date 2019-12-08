@@ -4,10 +4,10 @@ var Iphone11 =  {
     title: 'Iphone 11',
     price: '20.000.000 VNĐ',
     description: 'Màn hình:	IPS LCD, 6.1 inch Liquid Retina\n Hệ điều hành:	iOS 13\n Camera sau:	Chính 12 MP & Phụ 12 MP\n Camera trước:	12 MP\n CPU:	Apple A13 Bionic 6 nhân\n RAM:	4 GB\n Bộ nhớ trong:	64,256,512 GB\n Thẻ SIM:   1 eSIM & 1 Nano SIM, Hỗ trợ 4G\n Dung lượng pin:	3110 mAh, có sạc nhanh',
-    img1: '/image/Ip 11_den.png',
-    img2: '/image/Ip 11_tim.png',
-    img3: '/image/Ip 11_trang.png',
-    img4: '/image/Ip 11_xanh.png'
+    img1: '/image/Ip11_den.png',
+    img2: '/image/Ip11_tim.png',
+    img3: '/image/Ip11_trang.png',
+    img4: '/image/Ip11_xanh.png'
 };
 
 var Iphone11pro =  {

@@ -37,7 +37,7 @@ html {
     width: 100%;
     min-height: 100%;
     padding: 20px;
-    background: #243b55;
+    background: linear-gradient(90deg, #141E30 0%, #243B55 100%);
     font-family: "Cabin";
   }
   
