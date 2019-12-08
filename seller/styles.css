@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin:400,500&display=swap&subset=vietnamese");
+
+body {
+  font-family: "Cabin", sans-serif;
+}
+
+.navbar {
+  background-color: white;
+}
+
+#findButton {
+  font-weight: 600;
+  background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+}
+
+#loginBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+}
+
+#loginBtn:hover {
+  background-color: #243b55;
+  color: white;
+}
+
+#followBtn {
+  border-color: #243b55;
+  color: #243b55;
+  border-width: medium;
+  font-weight: 600;
+  background-color: white;
+}
+
+.a {
+  color: #243b55;
+  font-weight: 500;
+}
+
+#accordionCategory {
+  width: 25%;
+}
+
+#carouselHotProduct {
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #243b55;
+  font-family: "Cabin", sans-serif;
+  font-weight: 500;
+}
+
+#lisceneTitle {
+  font-size: 12px;
+  color: white;
+}
+
+#liscene {
+  font-size: 12px;
+  color: #5e6366;
+}
+
+.logoContact {
+  margin-top: 30px;
+}
+
+.navbar .navbar-toggler-icon {
+  background-image: url("https://mdbootstrap.com/img/svg/hamburger7.svg?color=243b55");
+}
+
+.headerTitle {
+  font-family: Cabin;
+  font-style: normal;
+  font-weight: 600;
+  color: #243b55;
+}
+
+#detailWrap {
+  display: flex;
+  flex-direction: row;
+  flex: 100%;
+  background-color: white; 
+  margin-top: 120px;
+}
+
+.footerText {
+  float: left;
+}
+
+.footerText a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.footerBlock {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#productBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 2em;
+}
+
+h5 {
+  color: #243b55;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  font-weight: 600;
+}
+
+h6 {
+  color: black;
+}
+
+.card-title {
+  color: black;
+}
+
+.card-text {
+  color: black;
+}
+
+#priceBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#priceTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#priceText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#productLink {
+  color: transparent;
+}
+
+.paginationNav {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  align-self: center;
+}
+
+.card-deck {
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1em;
+}
+
+.categoryItem {
+  color: #243b55;
+}
+
+.categoryItem:hover {
+  color: #243b55;
+  text-decoration: none;
+}
+
+#categoryItemWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 1em;
+}
+
+#headerItemTitle {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  color: #243b55;
+}
+
+.Product_Button
+{
+    padding:20px;
+    border:1px solid #fff;
+}
+.margin50{
+    margin-top:50px
+}
+.productbtn:after {
+    font-family: "Glyphicons Halflings";
+    content: "\e114";
+    float: right;
+    margin-left: 15px;
+  }
+  /* Icon when the collapsible content is hidden */
+  .productbtn.collapsed:after {
+    content: "\e080";
+  }
+  .width450
+  {
+      width:450px
+  }
+  .margin50 {
+    margin-top:50px;   
+}
+input[type=radio], input[type=checkbox]
+{
+    margin:4px !important;
+}
+.dimentions-width, .dimentions-height
+{
+    width:90%;
+    display:initial;
+}
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: #243b55;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 #243b5528;
+  box-shadow: 0 10px 30px 0 #243b5528;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: "Cabin";
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #243b55;
+  font-family: "Cabin";
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  font-family: "Cabin";
+}
+
