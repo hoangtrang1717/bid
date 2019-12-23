@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Sign In</title>
+    <title>Sign Up</title>
     <link rel="shortcut icon" type="image/png" href="../../logo/icon.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -27,15 +27,16 @@
           </div>
 
           <form id="form_id" method="post" name="myform">
+            <input type="text" name="email" id="email" placeholder="email"/>
               <input type="text" name="username" id="username" placeholder="username"/>
               <input type="password" name="password" id="password" placeholder="password"/>
               <div class="g-recaptcha" data-sitekey="6LfpjskUAAAAAEbLfTCtZ-LcMsDghtNRzKRvgG9o"></div>
-              <input type="button" value="Đăng nhập" id="submit" onclick="validate()"/>
+              <input type="button" value="Đăng ký" id="submit" onclick="validate()"/>
           </form>
           <!-- Remind Passowrd -->
           <div id="formFooter">
             <a class="underlineHover" href="../forgotPasswordPage/forgotPassword.html">Quên mật khẩu</a><br/>
-            <a class="underlineHover" href="../signUpPage/signUpPage.html">Chưa có tài khoản? Đăng ký</a>
+            <a class="underlineHover" href="../signInPage/signInPage.html">Đã có tài khoản? Đăng nhập</a>
           </div>
       
         </div>

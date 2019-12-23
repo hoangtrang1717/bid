@@ -56,7 +56,7 @@
               Tìm kiếm
             </button>
           </form>
-          <ul class="navbar-nav ml-auto  align-items-center">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item active ml-5">
               <a class="nav-link align-middle" href="#home"
                 ><p class="headerTitle">Trang chủ</p></a
@@ -67,17 +67,16 @@
                 ><p class="headerTitle">Liên hệ</p></a
               >
             </li>
-            <li class="nav-item avatar dropdown ml-5">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" width="50px" class="rounded-circle" alt="avatar image">
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                  <a class="dropdown-item" href="./screen/profilePage/profilePage.html">Trang cá nhân</a>
-                  <a class="dropdown-item" href="#">Yêu thích</a>
-                  <a class="dropdown-item" href="../index.html">Đăng xuất</a>
-                </div>
-              </li>
+            <li class="ml-5">
+              <button
+                class="btn btn-outline-primary my-2 my-sm-0 p-2"
+                type="submit"
+                id="loginBtn"
+                onclick="window.location.href='/screen/signInPage/signInPage.html'"
+              >
+                Đăng nhập
+              </button>
+            </li>
           </ul>
         </div>
       </nav>
@@ -106,11 +105,11 @@
               data-parent="#accordionCategory"
             >
               <div class="card-body" id="categoryItemWrap">
-                <a href="./screen/phonePage/phonePage.html" class="categoryItem"
+                <a href="/screen/phonePage/phonePage.html" class="categoryItem"
                   >Điện thoại</a
                 >
                 <a
-                  href="./screen/laptopPage/laptopPage.html"
+                  href="/screen/laptopPage/laptopPage.html"
                   class="categoryItem"
                   >Laptop</a
                 >

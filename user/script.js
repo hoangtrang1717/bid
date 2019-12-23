@@ -17,8 +17,8 @@ function createProduct() {
     img.style.width = "100%";
     var cardBadge = document.createElement("span");
     cardBadge.className = "badge badge-danger";
-    cardBadge.textContent = "NEW";
-    cardBadge.style.width = "3em";
+    cardBadge.textContent = "02:00:47";
+    cardBadge.style.width = "6em";
     var cardBody = document.createElement("div");
     cardBody.className = "card-body";
     var name = document.createElement("h5");

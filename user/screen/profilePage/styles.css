@@ -351,7 +351,7 @@ h6 {
 }
 
 .card-deck {
-  justify-content:center;
+  justify-content:space-around;
   align-items: stretch;
   padding: 1em;
 }
