@@ -1,6 +1,11 @@
+const http = require('http')
 const express = require('express');
 const exphbs  = require('express-handlebars');
 
+http.createServer(function(request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"})
+  response.end("Hello\n")
+}).listen(process.env.PORT)
 const app = express();
 
 app.engine('hbs', exphbs({
