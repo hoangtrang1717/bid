@@ -1,9 +1,18 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const db = require("../utils/queries");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", async function(req, res) {
+  const endSoon = await db.load('SELECT * FROM public."PRODUCT"');
+  const highBid = await db.load('SELECT * FROM public."PRODUCT"');
+  const highPrice = await db.load(
+    'SELECT * FROM public."PRODUCT" ORDER BY "PRESENT_PRICE" DESC'
+  );
+  res.render("home", {
+    endSoon: endSoon.rows.slice(0, 5),
+    highBid: highBid.rows.slice(0, 5),
+    highPrice: highPrice.rows.slice(0, 5)
+  });
 });
 
 module.exports = router;
