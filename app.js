@@ -1,9 +1,12 @@
 const http = require('http')
 const bodyParser = require('body-parser');
 const express = require('express');
+var session  = require('express-session');
 const exphbs  = require('express-handlebars');
 const hbs_sections = require('express-handlebars-sections');
-// const db = require('./queries');
+var helpers = require('handlebars-helpers')();
+var passport = require('passport');
+
 const app = express();
 
 app.engine('hbs', exphbs({
@@ -12,8 +15,18 @@ app.engine('hbs', exphbs({
     section: hbs_sections()
 }
 }));
+
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
+
+app.use(session({
+  secret : "secret",
+  saveUninitialized: true,
+  resave: true
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 var port = process.env.PORT || 3000;
 

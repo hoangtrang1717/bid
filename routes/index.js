@@ -32,15 +32,37 @@ router.get("/product/:id", async function(req, res) {
     'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."USER_ID" = U."USER_ID"',
     id
   );
-  console.log(product.rows[0])
+
   const seller = await db.detail(
-    'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."SELLER_ID" = U."USER_ID"',
+    'SELECT U."USER_NAME", U."USER_AVA", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."SELLER_ID" = U."USER_ID"',
     id
+  );
+  const relativeProduct = await db.detail(
+    'SELECT * FROM public."PRODUCT" WHERE "CATEGORY" = $1 ',
+    product.rows[0].CATEGORY
   );
   res.render("product", {
     product: product.rows[0],
     bidder: bidder.rows[0],
-    seller: seller.rows[0]
+    seller: seller.rows[0],
+    relativeProduct: relativeProduct.rows.splice(0, 5)
+  });
+});
+
+router.get("/:id", async function(req, res) {
+  const id = req.params.id;
+  const products = await db.detail(
+    'SELECT * FROM public."PRODUCT" WHERE "CATEGORY" = $1 ',
+    id
+  );
+  const category = await db.detail(
+    'SELECT * FROM public."CATEGORY" WHERE "CAT_ID" = $1 ',
+    id
+  );
+
+  res.render("category", {
+    products: products.rows,
+    category: category.rows[0]
   });
 });
 

@@ -1,0 +1,30 @@
+<div class="productBlock">
+    <h5>Trang chủ > {{this.category.CAT_NAME}}</h5>
+    <div class="container">
+        <div class="row hidden-md-up">
+            {{#each this.products}}
+            <div class="col-md-4 mt-4">
+                <div class="card">
+                    <a href="/product/{{PRO_ID}}">
+                        <img class="card-img-top img-fluid" src="{{IMG1}}" />
+                        <div class="card-body">
+                            <h5 class="card-title">{{PRO_NAME}}</h5>
+                            <div class="priceBlock">
+                                <div class="priceTitle">
+                                    <h6>Giá hiện tại:</h6>
+                                    <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                                </div>
+                                <div class="priceText">
+                                    <h6>Giá mua ngay:</h6>
+                                    <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                                </div>
+                            </div>
+                            <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

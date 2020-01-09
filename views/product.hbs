@@ -6,6 +6,21 @@
     color: white;
   }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
   .navbar {
     background-color: white;
   }
@@ -356,20 +371,20 @@
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá hiện tại:</h6>
             <h6 class="titleTxt mr-3" id="priceNow" style="color: red;">
-              {{this.product.PRESENT_PRICE}}
+              {{addCommas this.product.PRESENT_PRICE}} VNĐ
             </h6>
           </div>
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá mua ngay:</h6>
             <h6 class="titleTxt mr-3" id="priceBuy" style="color: red">
-              {{this.product.BUY_NOW}}
+              {{addCommas this.product.BUY_NOW}} VNĐ
             </h6>
           </div>
           <h6 class="titleTxt mt-3">Người ra giá cao nhất:</h6>
           <div id="priceText">
             <h6 class="titleTxt mr-3">{{this.bidder.USER_NAME}}</h6>
             <h6 class="titleTxt mr-3" id="priceHighest" style="color: red">
-              {{this.product.PRESENT_PRICE}}
+              {{addCommas this.product.PRESENT_PRICE}} VNĐ
             </h6>
           </div>
           <div id="priceText">
@@ -387,7 +402,7 @@
     </div>
     <div id="sellerBlock">
       <div class="sellerInfoWrap">
-        <img class="avaImg" src="/images/Facebook.png" />
+        <img class="avaImg" src="{{this.seller.USER_AVA}}" />
         <h6 class="ml-3 mt-3">{{this.seller.USER_NAME}}</h6>
       </div>
       <div class="sellerInfoWrap">
@@ -405,7 +420,7 @@
     <div id="descriptBlock">
       <div class="descriptTitle">
         <h5>Mô tả sản phẩm</h5>
-        <p>Đăng {{this.product.PRO_DATE}}</p>
+        <p>Đăng ngày {{moment this.product.PRO_DATE "MM-DD-YYYY"}}</p>
       </div>
       <div>
         <p id="desTxt">
@@ -416,7 +431,31 @@
 
     <div id="productBlock">
       <h5 class="ml-3 mt-3 mb-3">Sản phẩm tương tự</h5>
-      <div class="card-deck" id="cardDeck"></div>
+      <div class="card-columns">
+        {{#each this.relativeProduct}}
+        
+          <div class="card">
+            <a href="/product/{{PRO_ID}}">
+            <img class="card-img-top align-content-md-center" src={{IMG1}} />
+            <div class="card-body">
+              <h5 class="card-title">{{PRO_NAME}}</h5>
+              <div class="priceBlock">
+                <div class="priceTitle">
+                  <h6>Giá hiện tại:</h6>
+                  <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                </div>
+                <div class="priceText">
+                  <h6>Giá mua ngay:</h6>
+                  <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                </div>
+              </div>
+              <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+            </div>
+            </a>
+          </div>
+        
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>
