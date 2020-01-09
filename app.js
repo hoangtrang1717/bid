@@ -6,6 +6,7 @@ const exphbs  = require('express-handlebars');
 const hbs_sections = require('express-handlebars-sections');
 var helpers = require('handlebars-helpers')();
 var passport = require('passport');
+var flash    = require('connect-flash');
 
 const app = express();
 
@@ -22,11 +23,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(session({
   secret : "secret",
   saveUninitialized: true,
-  resave: true
+  resave: true,
+  cookie: {
+    maxAge: 1000*60*10000
+  }
 }))
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 var port = process.env.PORT || 3000;
 
@@ -36,6 +37,10 @@ app.use(
     extended: true,
   })
 )
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 const mainRouter = require('./routes/index')
 app.use('/', mainRouter);

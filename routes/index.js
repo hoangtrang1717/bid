@@ -1,6 +1,12 @@
 var express = require("express");
 var router = express.Router();
 const db = require("../utils/queries");
+var bodyParser = require("body-parser");
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var passport = require("passport");
+const expressValidator = require("express-validator");
+
+require("../config/passport");
 
 router.get("/", async function(req, res) {
   const endSoon = await db.load(
@@ -13,22 +19,56 @@ router.get("/", async function(req, res) {
     'SELECT * FROM public."PRODUCT" ORDER BY "PRESENT_PRICE" DESC'
   );
   const category = await db.load('SELECT * FROM public."CATEGORY"');
-  res.render("home", {
-    endSoon: endSoon.rows.slice(0, 5),
-    highBid: highBid.rows.slice(0, 5),
-    highPrice: highPrice.rows.slice(0, 5),
-    category: category.rows
-  });
+  if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
+    res.render("seller");
+  }
+  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    res.render("homeUser");
+  }
+  if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
+    res.render("admin");
+  }
+  else{
+    res.render("home", {
+      endSoon: endSoon.rows.slice(0, 5),
+      highBid: highBid.rows.slice(0, 5),
+      highPrice: highPrice.rows.slice(0, 5),
+      category: category.rows
+    });
+  }
+    
 });
 
 router.get("/signin", function(req, res) {
   res.render("signin", { layout: false });
 });
 
+router.post(
+  "/signin",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/signin",
+    failureFlash: true
+  })
+);
+
 router.get("/signup", function(req, res) {
   res.render("signup", { layout: false });
 });
 
+router.post(
+  "/signup",
+  passport.authenticate("local-signup", {
+    successRedirect: "/",
+    failureRedirect: "/signup",
+    failureFlash: true
+  })
+);
+
+router.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 router.get("/seller", function(req, res) {
   res.render("seller");
@@ -84,5 +124,10 @@ router.get("/:id", async function(req, res) {
     category: category.rows
   });
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/");
+}
 
 module.exports = router;
