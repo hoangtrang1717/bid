@@ -22,6 +22,13 @@ app.use(
 
 const mainRouter = require('./routes/index')
 app.use('/', mainRouter);
+// const productRouter = require('./routes/product')
+// app.use('/product', productRouter);
+
+//Error
+app.use(function (req, res) {
+  res.status(404).render('error', { layout: false});
+});
 
 app.listen(port);
 console.log("Listening on port " + port);

@@ -16,5 +16,14 @@ module.exports = {
         } else done(results);
       });
     });
-  }
+  },
+  detail: (sql, id) => {
+    return new Promise(function(done, fail) {
+      pool.query(sql, [id], (error, results) => {
+        if (error) {
+          fail(error);
+        } else done(results);
+      });
+    });
+  },
 };
