@@ -2,11 +2,15 @@ const http = require('http')
 const bodyParser = require('body-parser');
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const hbs_sections = require('express-handlebars-sections');
 // const db = require('./queries');
 const app = express();
 
 app.engine('hbs', exphbs({
-  defaultLayout: 'main.hbs'
+  defaultLayout: 'main.hbs',
+  helpers: {
+    section: hbs_sections()
+}
 }));
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
@@ -22,9 +26,6 @@ app.use(
 
 const mainRouter = require('./routes/index')
 app.use('/', mainRouter);
-// const productRouter = require('./routes/product')
-// app.use('/product', productRouter);
-
 //Error
 app.use(function (req, res) {
   res.status(404).render('error', { layout: false});

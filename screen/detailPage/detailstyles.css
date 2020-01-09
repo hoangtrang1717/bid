@@ -67,7 +67,7 @@ body {
 
 #liscene {
   font-size: 12px;
-  color: white;
+  color: #5e6366;
 }
 
 .logoContact {
@@ -181,7 +181,7 @@ p {
 }
 
 .card-deck {
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: stretch;
   padding: 1em;
 }
