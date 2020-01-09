@@ -21,9 +21,25 @@ router.get("/", async function(req, res) {
   });
 });
 
+router.get("/signin", function(req, res) {
+  res.render("signin", { layout: false });
+});
+
+router.get("/signup", function(req, res) {
+  res.render("signup", { layout: false });
+});
+
+
+router.get("/seller", function(req, res) {
+  res.render("seller");
+});
+
+router.get("/reset", function(req, res) {
+  res.render("reset", { layout: false });
+});
+
 router.get("/product/:id", async function(req, res) {
   const id = req.params.id;
-  console.log(id);
   const product = await db.detail(
     'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
     id
@@ -41,11 +57,13 @@ router.get("/product/:id", async function(req, res) {
     'SELECT * FROM public."PRODUCT" WHERE "CATEGORY" = $1 ',
     product.rows[0].CATEGORY
   );
+  const category = await db.load('SELECT * FROM public."CATEGORY"');
   res.render("product", {
     product: product.rows[0],
     bidder: bidder.rows[0],
     seller: seller.rows[0],
-    relativeProduct: relativeProduct.rows.splice(0, 5)
+    relativeProduct: relativeProduct.rows.splice(0, 5),
+    category: category.rows
   });
 });
 
@@ -55,27 +73,16 @@ router.get("/:id", async function(req, res) {
     'SELECT * FROM public."PRODUCT" WHERE "CATEGORY" = $1 ',
     id
   );
-  const category = await db.detail(
+  const cate = await db.detail(
     'SELECT * FROM public."CATEGORY" WHERE "CAT_ID" = $1 ',
     id
   );
-
+  const category = await db.load('SELECT * FROM public."CATEGORY"');
   res.render("category", {
     products: products.rows,
-    category: category.rows[0]
+    cate: cate.rows[0],
+    category: category.rows
   });
-});
-
-router.get("/signin", function(req, res) {
-  res.render("signin", { layout: false });
-});
-
-router.get("/signup", function(req, res) {
-  res.render("signup", { layout: false });
-});
-
-router.get("/reset", function(req, res) {
-  res.render("reset", { layout: false });
 });
 
 module.exports = router;

@@ -1,130 +1,136 @@
 <div>
-    <div style="background-color: #EAEAEA">
-      <div id="detailWrap">
-        <div class="accordion" id="accordionCategory">
-          <div class="card">
-            <div class="ml-3 mt-3" id="headingOne">
-              <a id="headerItemTitle" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                aria-controls="collapseOne">
-                Điện thoại - Laptop
-              </a>
-            </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCategory">
-              <div class="card-body" id="categoryItemWrap">
-                {{#each this.category}}
-                <a href="/{{CAT_ID}}" class="categoryItem">{{CAT_NAME}}</a>
-                {{/each}}
-              </div>
+  <div style="background-color: #EAEAEA">
+    <div id="detailWrap">
+      <div class="accordion" id="accordionCategory">
+        <div class="card">
+          <div class="ml-3 mt-3" id="headingOne">
+            <a id="headerItemTitle" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+              aria-controls="collapseOne">
+              Danh mục
+            </a>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionCategory">
+            <div class="card-body" id="categoryItemWrap">
+              {{#each this.category}}
+              <a href="/{{CAT_ID}}" class="categoryItem">{{CAT_NAME}}</a>
+              {{/each}}
             </div>
           </div>
         </div>
-        <div id="carouselHotProduct" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselHotProduct" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselHotProduct" data-slide-to="1"></li>
-            <li data-target="#carouselHotProduct" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="https://cdn.tgdd.vn/Products/Images/42/210653/iphone-11-pro-max-256gb-green-600x600.jpg" class="d-block mx-auto" alt="..." height="300px" />
-            </div>
-            <div class="carousel-item">
-              <img src="https://cdn.nguyenkimmall.com/images/thumbnails/1024/717/detailed/580/10041501_TIVI_SAMSUNG-QLED_QA65Q75RAKXXV_02.jpg" class="d-block mx-auto" alt="..." height="300px" />
-            </div>
-            <div class="carousel-item">
-              <img src="https://cdn.nguyenkimmall.com/images/thumbnails/600/450/detailed/537/10031738_MAYANH_CANON_EOS-M10-KIT15-45MM_01_04.jpg" class="d-block mx-auto" alt="..." height="300px" />
-            </div>
+      </div>
+      <div id="carouselHotProduct" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselHotProduct" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselHotProduct" data-slide-to="1"></li>
+          <li data-target="#carouselHotProduct" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://cdn.tgdd.vn/Products/Images/42/210653/iphone-11-pro-max-256gb-green-600x600.jpg"
+              class="d-block mx-auto" alt="..." height="300px" />
           </div>
-          <a class="carousel-control-prev" href="#carouselHotProduct" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Trước</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselHotProduct" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Sau</span>
-          </a>
+          <div class="carousel-item">
+            <img
+              src="https://cdn.nguyenkimmall.com/images/thumbnails/1024/717/detailed/580/10041501_TIVI_SAMSUNG-QLED_QA65Q75RAKXXV_02.jpg"
+              class="d-block mx-auto" alt="..." height="300px" />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://cdn.nguyenkimmall.com/images/thumbnails/600/450/detailed/537/10031738_MAYANH_CANON_EOS-M10-KIT15-45MM_01_04.jpg"
+              class="d-block mx-auto" alt="..." height="300px" />
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="productBlock">
-      <h5>Sắp kết thúc</h5>
-      <div class="card-columns">
-        {{#each this.endSoon}}
-        
-          <div class="card">
-            <a href="/product/{{PRO_ID}}">
-            <img class="card-img-top img-fluid" src={{IMG1}} />
-            <div class="card-body">
-              <h5 class="card-title">{{PRO_NAME}}</h5>
-              <div class="priceBlock">
-                <div class="priceTitle">
-                  <h6>Giá hiện tại:</h6>
-                  <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
-                </div>
-                <div class="priceText">
-                  <h6>Giá mua ngay:</h6>
-                  <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
-                </div>
-              </div>
-              <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
-            </div>
-            </a>
-          </div>
-        
-        {{/each}}
-      </div>
-      <h5>Số lượt ra giá cao nhất</h5>
-      <div class="card-columns">
-        {{#each this.highBid}}
-        
-          <div class="card">
-            <a href="/product/{{PRO_ID}}">
-            <img class="card-img-top img-fluid" src={{IMG1}} />
-            <div class="card-body">
-              <h5 class="card-title">{{PRO_NAME}}</h5>
-              <div class="priceBlock">
-                <div class="priceTitle">
-                  <h6>Giá hiện tại:</h6>
-                  <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
-                </div>
-                <div class="priceText">
-                  <h6>Giá mua ngay:</h6>
-                  <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
-                </div>
-              </div>
-              <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
-            </div>
-            </a>
-          </div>
-        
-        {{/each}}
-      </div>
-      <h5>Giá cao nhất</h5>
-      <div class="card-columns">
-        {{#each this.highPrice}}
-        
-          <div class="card">
-            <a href="/product/{{PRO_ID}}">
-            <img class="card-img-top img-fluid" src={{IMG1}} />
-            <div class="card-body">
-              <h5 class="card-title">{{PRO_NAME}}</h5>
-              <div class="priceBlock">
-                <div class="priceTitle">
-                  <h6>Giá hiện tại:</h6>
-                  <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
-                </div>
-                <div class="priceText">
-                  <h6>Giá mua ngay:</h6>
-                  <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
-                </div>
-              </div>
-              <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
-            </div>
-            </a>
-          </div>
-        
-        {{/each}}
+        <a class="carousel-control-prev" href="#carouselHotProduct" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Trước</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselHotProduct" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Sau</span>
+        </a>
       </div>
     </div>
   </div>
+  <div class="productBlock">
+    <h5>Sắp kết thúc</h5>
+    <div class="card-columns">
+      {{#each this.endSoon}}
+
+      <div class="card">
+        <a href="/product/{{PRO_ID}}">
+          <img class="card-img-top img-fluid" src={{IMG1}} />
+          <div class="card-body">
+            <h5 class="card-title">{{PRO_NAME}}</h5>
+            <div class="priceBlock">
+              <div class="priceTitle">
+                <h6>Giá hiện tại:</h6>
+                <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+              </div>
+              <div class="priceText">
+                <h6>Giá mua ngay:</h6>
+                <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+              </div>
+            </div>
+            <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+          </div>
+        </a>
+      </div>
+
+      {{/each}}
+    </div>
+    <h5>Số lượt ra giá cao nhất</h5>
+    <div class="card-columns">
+      {{#each this.highBid}}
+
+      <div class="card">
+        <a href="/product/{{PRO_ID}}">
+          <img class="card-img-top img-fluid" src={{IMG1}} />
+          <div class="card-body">
+            <h5 class="card-title">{{PRO_NAME}}</h5>
+            <div class="priceBlock">
+              <div class="priceTitle">
+                <h6>Giá hiện tại:</h6>
+                <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+              </div>
+              <div class="priceText">
+                <h6>Giá mua ngay:</h6>
+                <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+              </div>
+            </div>
+            <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+          </div>
+        </a>
+      </div>
+
+      {{/each}}
+    </div>
+    <h5>Giá cao nhất</h5>
+    <div class="card-columns">
+      {{#each this.highPrice}}
+
+      <div class="card">
+        <a href="/product/{{PRO_ID}}">
+          <img class="card-img-top img-fluid" src={{IMG1}} />
+          <div class="card-body">
+            <h5 class="card-title">{{PRO_NAME}}</h5>
+            <div class="priceBlock">
+              <div class="priceTitle">
+                <h6>Giá hiện tại:</h6>
+                <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+              </div>
+              <div class="priceText">
+                <h6>Giá mua ngay:</h6>
+                <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+              </div>
+            </div>
+            <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+          </div>
+        </a>
+      </div>
+
+      {{/each}}
+    </div>
+  </div>
+</div>
