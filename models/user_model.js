@@ -4,6 +4,7 @@ module.exports = {
   all: _ => db.load('SELECT * FROM public."USER"'),
   // add: entity => db.add(entity, "USER"),
   getByUserName: async username => {
+
     const user = await db.detail(
       'SELECT * FROM public."USER" WHERE "USER_NAME" = $1',
       username
@@ -21,6 +22,7 @@ module.exports = {
       password,
       email,
     ),
+
   getSinglePro: id =>
     db.detail('select * from public."PRODUCT" where "PRO_ID" = $1', id),
   // getLikes: userID =>

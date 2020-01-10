@@ -31,12 +31,12 @@ app.use(session({
 
 var port = process.env.PORT || 3000;
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+    extended: true
   })
-)
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,9 +44,10 @@ app.use(flash());
 
 const mainRouter = require('./routes/index')
 app.use('/', mainRouter);
+
 //Error
-app.use(function (req, res) {
-  res.status(404).render('error', { layout: false});
+app.use(function(req, res) {
+  res.status(404).render("error", { layout: false });
 });
 
 app.listen(port);
