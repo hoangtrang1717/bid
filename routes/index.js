@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var passport = require("passport");
 const expressValidator = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 require("../config/passport");
 
@@ -68,7 +69,7 @@ router.get("/", async function(req, res) {
       user: req.user
     });
   }
-  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+  else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
     res.render("bidder", {
       endSoon: endSoon.rows.slice(0, 5),
       highBid: highBid.rows.slice(0, 5),
@@ -79,7 +80,8 @@ router.get("/", async function(req, res) {
     });
     // if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
     //   res.render("admin", { user: req.user });
-  } else {
+  } 
+  else {
     res.render("home", {
       endSoon: endSoon.rows.slice(0, 5),
       highBid: highBid.rows.slice(0, 5),
@@ -124,13 +126,39 @@ router.get("/profile", async function(req, res) {
   if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
     res.render("sellerProfile", {
       isUser: true,
-      user: req.user
+      user: req.user,
     });
   }
-  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+  else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    const isJoin = await db.detail(`SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`, req.user.USER_ID)
     res.render("bidderProfile", {
       isUser: true,
-      user: req.user
+      user: req.user,
+      isJoin: isJoin.rows
+    });
+  } else {
+    res.render("error", { layout: false });
+  }
+});
+
+router.post("/profile", async function(req, res) {
+  // if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER" ) {
+  //   const fullname = req.
+  //   res.render("sellerProfile", {
+  //     isUser: true,
+  //     user: req.user
+  //   });
+  // }
+  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    const isJoin = await db.detail(`SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`, req.user.USER_ID)
+    const salt = await bcrypt.genSaltSync(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
+    await db.load(`UPDATE public."USER" SET "USER_FULLNAME" = '${req.body.fullname.toString()}', "USER_EMAIL" = '${req.body.email.toString()}', "USER_NAME" = '${req.body.username.toString()}', "USER_PASSWORD" = '${hash.toString()}'  WHERE "USER_ID" = ${req.user.USER_ID}`)
+    const user = await db.detail(`SELECT * FROM public."USER" WHERE "USER_ID" = $1 ` , req.user.USER_ID)
+    res.render("bidderProfile", {
+      isUser: true,
+      user: user.rows[0],
+      isJoin: isJoin.rows
     });
   } else {
     res.render("error", { layout: false });

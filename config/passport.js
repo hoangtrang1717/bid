@@ -24,7 +24,7 @@ passport.use(
   "local",
   new LocalStrategy(
     {
-      usernameField: "username", // form field
+      usernameField: "username",
       passwordField: "password",
       passReqToCallback: true
     },
@@ -34,6 +34,7 @@ passport.use(
         if (bcrypt.compareSync(password, userRouter.USER_PASSWORD)) {
           return done(null, userRouter.USER_ID);
         } else {
+          console.log("Bad username or password");
           return done(null, false, { message: "Bad username or password" });
         }
       } else {
@@ -61,8 +62,7 @@ passport.use(
         const salt = await bcrypt.genSaltSync(10);
         const hash = await bcrypt.hash(password.toString(), salt);
         const userRouter = await user.add(req.body.username, hash, email);
-        return done(null, userRouter.USER_ID);
-        console.log("Success")
+        done(null, userRouter.USER_ID);    
       }
     }
   )
