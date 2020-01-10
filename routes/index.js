@@ -27,7 +27,7 @@ hbs.registerHelper("formatCurrency", function(n) {
   var s = n.toString();
   var regex = /\B(?=(\d{3})+(?!\d))/g;
   var ret = s.replace(regex, ".");
-  ret += "đ";
+  ret += " VNĐ";
   return ret;
 });
 
