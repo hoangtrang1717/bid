@@ -63,9 +63,10 @@ router.get("/", async function(req, res) {
   );
   const category = await db.load('SELECT * FROM public."CATEGORY"');
   if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
-    res.render("seller", { 
+    res.render("seller", {
       isUser: true,
-      user: req.user });
+      user: req.user
+    });
   }
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
     res.render("bidder", {
@@ -76,8 +77,8 @@ router.get("/", async function(req, res) {
       isUser: true,
       user: req.user
     });
-  // if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
-  //   res.render("admin", { user: req.user });
+    // if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
+    //   res.render("admin", { user: req.user });
   } else {
     res.render("home", {
       endSoon: endSoon.rows.slice(0, 5),
@@ -121,7 +122,7 @@ router.get("/logout", function(req, res) {
 
 router.get("/profile", async function(req, res) {
   if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
-    res.render("sellerProfile",{
+    res.render("sellerProfile", {
       isUser: true,
       user: req.user
     });
@@ -131,16 +132,10 @@ router.get("/profile", async function(req, res) {
       isUser: true,
       user: req.user
     });
-  }
-  if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
-    res.render("adminProfile", {
-      isUser: true,
-      user: req.user
-    });
-  }
-  else {
+  } else {
     res.render("error", { layout: false });
-  }});
+  }
+});
 
 router.get("/reset", function(req, res) {
   res.render("reset", { layout: false });
@@ -158,76 +153,80 @@ const updateWinner = async (seller, proID, userID) => {
 router.post("/product/:id", async function(req, res) {
   // clearInterval(timeCountdown);
   const id = req.params.id;
-  var bidPrice = await req.body.price;
-  var buyNow = await req.body.hasOwnProperty("buyNow");
-  var price = 0;
-  let cannotBuy = false;
-  let isError = false;
-  if (buyNow) {
-    cannotBuy = true;
-    const product = await db.detail(
+  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    var bidPrice = await req.body.price;
+    var buyNow = await req.body.hasOwnProperty("buyNow");
+    var price = 0;
+    let cannotBuy = false;
+    let isError = false;
+    if (buyNow) {
+      cannotBuy = true;
+      const product = await db.detail(
+        'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
+        id
+      );
+      await db.load(
+        `UPDATE public."PRODUCT" SET "PRESENT_PRICE" = ${product.rows[0].BUY_NOW}, "BID_COUNT" = "BID_COUNT" + 1, "USER_ID" = ${req.user.USER_ID}  WHERE "PRO_ID" = ${id}`
+      );
+      await db.load(
+        `insert into public."BID_HISTORY" ("USER_ID","PRO_ID","BID_PRICE","BID_TIME","BID_STATUS") VALUES (${
+          req.user.USER_ID
+        },${id},${price},TO_TIMESTAMP(${Date.now() / 1000.0}),TRUE)`
+      );
+      updateWinner(product.rows[0].SELLER_ID, id, req.user.USER_ID);
+    } else {
+      if (bidPrice === "") isError = true;
+      else {
+        if (/^[0-9]*$/.test(bidPrice)) {
+          price = Number(bidPrice);
+          const product = await db.detail(
+            'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
+            id
+          );
+          if (
+            price % product.rows[0].BID_JUMP === 0 &&
+            price > product.rows[0].PRESENT_PRICE
+          ) {
+            await db.load(
+              `UPDATE public."PRODUCT" SET "PRESENT_PRICE" = ${price}, "BID_COUNT" = "BID_COUNT" + 1, "USER_ID" = ${req.user.USER_ID} WHERE "PRO_ID" = ${id}`
+            );
+            await db.load(
+              `insert into public."BID_HISTORY" ("USER_ID","PRO_ID","BID_PRICE","BID_TIME","BID_STATUS") VALUES (${
+                req.user.USER_ID
+              },${id},${price},TO_TIMESTAMP(${Date.now() / 1000.0}),TRUE)`
+            );
+            if (price >= product.rows[0].BUY_NOW) {
+              cannotBuy = true;
+              updateWinner(product.rows[0].SELLER_ID, id, req.user.USER_ID);
+            }
+          } else isError = true;
+        } else isError = true;
+      }
+    }
+    const newProduct = await db.detail(
       'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
       id
     );
-    await db.load(
-      `UPDATE public."PRODUCT" SET "PRESENT_PRICE" = ${
-        product.rows[0].BUY_NOW
-      }, "BID_COUNT" = "BID_COUNT" + 1, "USER_ID" = ${6}  WHERE "PRO_ID" = ${id}`
+    const bidder = await db.detail(
+      'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."USER_ID" = U."USER_ID"',
+      id
     );
-    await db.load(
-      `insert into public."BID_HISTORY" ("USER_ID","PRO_ID","BID_PRICE","BID_TIME","BID_STATUS") VALUES (${6},${id},${price},TO_TIMESTAMP(${Date.now() /
-        1000.0}),TRUE)`
+    const seller = await db.detail(
+      'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."SELLER_ID" = U."USER_ID"',
+      id
     );
-    updateWinner(product.rows[0].SELLER_ID, id, 6);
-  } else {
-    if (bidPrice === "") isError = true;
-    else {
-      if (/^[0-9]*$/.test(bidPrice)) {
-        price = Number(bidPrice);
-        const product = await db.detail(
-          'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
-          id
-        );
-        if (
-          price % product.rows[0].BID_JUMP === 0 &&
-          price > product.rows[0].PRESENT_PRICE
-        ) {
-          await db.load(
-            `UPDATE public."PRODUCT" SET "PRESENT_PRICE" = ${price}, "BID_COUNT" = "BID_COUNT" + 1, "USER_ID" = ${6} WHERE "PRO_ID" = ${id}`
-          );
-          await db.load(
-            `insert into public."BID_HISTORY" ("USER_ID","PRO_ID","BID_PRICE","BID_TIME","BID_STATUS") VALUES (${6},${id},${price},TO_TIMESTAMP(${Date.now() /
-              1000.0}),TRUE)`
-          );
-          if (price >= product.rows[0].BUY_NOW) {
-            cannotBuy = true;
-            updateWinner(product.rows[0].SELLER_ID, id, 6);
-          }
-        } else isError = true;
-      } else isError = true;
-    }
+    res.render("product", {
+      isUser: true,
+      user: req.user,
+      isUser: true,
+      isError: isError,
+      cannotBuy: cannotBuy,
+      product: newProduct.rows[0],
+      bidder: bidder.rows[0],
+      seller: seller.rows[0],
+      recommend: newProduct.rows[0].PRESENT_PRICE + newProduct.rows[0].BID_JUMP
+    });
   }
-  const newProduct = await db.detail(
-    'SELECT * FROM public."PRODUCT" WHERE "PRO_ID" = $1 ',
-    id
-  );
-  const bidder = await db.detail(
-    'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."USER_ID" = U."USER_ID"',
-    id
-  );
-  const seller = await db.detail(
-    'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."SELLER_ID" = U."USER_ID"',
-    id
-  );
-  res.render("product", {
-    isUser: true,
-    isError: isError,
-    cannotBuy: cannotBuy,
-    product: newProduct.rows[0],
-    bidder: bidder.rows[0],
-    seller: seller.rows[0],
-    recommend: newProduct.rows[0].PRESENT_PRICE + newProduct.rows[0].BID_JUMP
-  });
 });
 
 router.get("/product/:id", async function(req, res) {
@@ -260,17 +259,32 @@ router.get("/product/:id", async function(req, res) {
   );
   const category = await db.load('SELECT * FROM public."CATEGORY"');
 
-  res.render("product", {
-    isUser: true,
-    isError: false,
-    cannotBuy: cannotBuy,
-    product: product.rows[0],
-    bidder: bidder.rows[0],
-    seller: seller.rows[0],
-    recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP
-    relativeProduct: relativeProduct.rows.splice(0, 5),
-    category: category.rows
-  });
+  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    res.render("product", {
+      isUser: true,
+      user: req.user,
+      isUser: true,
+      isError: false,
+      cannotBuy: cannotBuy,
+      product: product.rows[0],
+      bidder: bidder.rows[0],
+      seller: seller.rows[0],
+      recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
+      relativeProduct: relativeProduct.rows.splice(0, 5),
+      category: category.rows
+    });
+  } else {
+    res.render("product", {
+      isError: false,
+      cannotBuy: cannotBuy,
+      product: product.rows[0],
+      bidder: bidder.rows[0],
+      seller: seller.rows[0],
+      recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
+      relativeProduct: relativeProduct.rows.splice(0, 5),
+      category: category.rows
+    });
+  }
 });
 
 router.get("/:id", async function(req, res) {
