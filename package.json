@@ -6,7 +6,7 @@
     "start": "node app"
   },
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^3.0.6",
     "bootstrap": "^4.4.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -16,7 +16,9 @@
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "nodemon": "^2.0.2",
     "passport": "^0.4.1",
-    "pg": "^7.17.0"
+    "pg": "^7.17.0",
+    "socket.io": "^2.3.0"
   }
 }

@@ -1,6 +1,7 @@
 {{#section 'css'}}
 <style>
   @import url("https://fonts.googleapis.com/css?family=Cabin:400,500&display=swap&subset=vietnamese");
+
   body {
     font-family: "Cabin", sans-serif;
     color: white;
@@ -331,13 +332,13 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG1}}"/>
+              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG1}}" />
             </div>
             <div class="carousel-item">
-              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG2}}"/>
+              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG2}}" />
             </div>
             <div class="carousel-item">
-              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG3}}"/>
+              <img class="d-block mx-auto" alt="..." height="300px" src="{{this.product.IMG3}}" />
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -356,20 +357,26 @@
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá hiện tại:</h6>
             <h6 class="titleTxt mr-3" id="priceNow" style="color: red;">
-              {{this.product.PRESENT_PRICE}}
+              {{formatCurrency this.product.PRESENT_PRICE}}
             </h6>
           </div>
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá mua ngay:</h6>
             <h6 class="titleTxt mr-3" id="priceBuy" style="color: red">
-              {{this.product.BUY_NOW}}
+              {{formatCurrency this.product.BUY_NOW}}
+            </h6>
+          </div>
+          <div id="priceText">
+            <h6 class="titleTxt mr-3">Số lượt ra giá:</h6>
+            <h6 class="titleTxt mr-3">
+              {{this.product.BID_COUNT}}
             </h6>
           </div>
           <h6 class="titleTxt mt-3">Người ra giá cao nhất:</h6>
           <div id="priceText">
-            <h6 class="titleTxt mr-3">{{this.bidder.USER_NAME}}</h6>
+            <h6 class="titleTxt mr-3">{{mask this.bidder.USER_NAME}}</h6>
             <h6 class="titleTxt mr-3" id="priceHighest" style="color: red">
-              {{this.product.PRESENT_PRICE}}
+              {{formatCurrency this.product.PRESENT_PRICE}}
             </h6>
           </div>
           <div id="priceText">
@@ -382,6 +389,21 @@
               <span class="fa fa-star uncheck"></span>
             </div>
           </div>
+          {{#if this.isUser}}
+          <div>
+            <form action="/product/{{this.product.PRO_ID}}" method="post">
+              <div id="inputGroup">
+                <h6>Ra giá:</h6>
+                <input type="text" id="price" name="price" placeholder="{{formatCurrency this.recommend}}" />
+                {{#if this.isError}}<p>Đã có lỗi xảy ra</p>{{/if}}
+              </div>
+              <div id="btnGroup">
+                <input type="submit" {{#if this.cannotBuy}}disabled="true" {{/if}} value="Ra giá" />
+                <input type="submit" {{#if this.cannotBuy}}disabled="true" {{/if}} name="buyNow" value="Mua ngay" />
+              </div>
+            </form>
+          </div>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -405,7 +427,7 @@
     <div id="descriptBlock">
       <div class="descriptTitle">
         <h5>Mô tả sản phẩm</h5>
-        <p>Đăng {{this.product.PRO_DATE}}</p>
+        <p>Đăng {{formatDate this.product.PRO_DATE}}</p>
       </div>
       <div>
         <p id="desTxt">
