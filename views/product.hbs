@@ -7,21 +7,22 @@
     color: white;
   }
 
-a:link {
-  text-decoration: none;
-}
+  a:link {
+    text-decoration: none;
+  }
 
-a:visited {
-  text-decoration: none;
-}
+  a:visited {
+    text-decoration: none;
+  }
 
-a:hover {
-  text-decoration: none;
-}
+  a:hover {
+    text-decoration: none;
+  }
 
-a:active {
-  text-decoration: none;
-}
+  a:active {
+    text-decoration: none;
+  }
+
   .navbar {
     background-color: white;
   }
@@ -282,6 +283,17 @@ a:active {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
+  #bidHistoryBlock {
+    display: flex;
+    flex: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    background-color: white;
+    margin: 1em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
   #desTxt {
     margin: 1em;
     margin-top: 0;
@@ -372,13 +384,13 @@ a:active {
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá hiện tại:</h6>
             <h6 class="titleTxt mr-3" id="priceNow" style="color: red;">
-              {{addCommas this.product.PRESENT_PRICE}} VNĐ
+              {{formatCurrency this.product.PRESENT_PRICE}}
             </h6>
           </div>
           <div id="priceText">
             <h6 class="titleTxt mr-3">Giá mua ngay:</h6>
             <h6 class="titleTxt mr-3" id="priceBuy" style="color: red">
-              {{addCommas this.product.BUY_NOW}} VNĐ
+              {{formatCurrency this.product.BUY_NOW}}
             </h6>
           </div>
           <div id="priceText">
@@ -391,7 +403,7 @@ a:active {
           <div id="priceText">
             <h6 class="titleTxt mr-3">{{mask this.bidder.USER_NAME}}</h6>
             <h6 class="titleTxt mr-3" id="priceHighest" style="color: red">
-              {{addCommas this.product.PRESENT_PRICE}} VNĐ
+              {{formatCurrency this.product.PRESENT_PRICE}}
             </h6>
           </div>
           <div id="priceText">
@@ -440,6 +452,28 @@ a:active {
     </div>
 
     <div id="descriptBlock">
+      <h5 class="ml-3 mt-3 mb-3">Lịch sử đấu giá của sản phẩm</h5>
+      <table class="table table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Thời điểm</th>
+            <th>Người mua</th>
+            <th>Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.history}}
+          <tr>
+            <td>{{moment BID_TIME "MM-DD-YYYY"}}</td>
+            <td>{{mask USER_FULLNAME}}</td>
+            <td>{{formatCurrency BID_PRICE}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <div id="descriptBlock">
       <div class="descriptTitle">
         <h5>Mô tả sản phẩm</h5>
         <p>Đăng ngày {{moment this.product.PRO_DATE "MM-DD-YYYY"}}</p>
@@ -455,27 +489,27 @@ a:active {
       <h5 class="ml-3 mt-3 mb-3">Sản phẩm tương tự</h5>
       <div class="card-columns">
         {{#each this.relativeProduct}}
-        
-          <div class="card">
-            <a href="/product/{{PRO_ID}}">
+
+        <div class="card">
+          <a href="/product/{{PRO_ID}}">
             <img class="card-img-top align-content-md-center" src={{IMG1}} />
             <div class="card-body">
               <h5 class="card-title">{{PRO_NAME}}</h5>
               <div class="priceBlock">
                 <div class="priceTitle">
                   <h6>Giá hiện tại:</h6>
-                  <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                  <h6 style="color: red">{{formatCurrency PRESENT_PRICE}} </h6>
                 </div>
                 <div class="priceText">
                   <h6>Giá mua ngay:</h6>
-                  <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                  <h6 style="color: red">{{formatCurrency BUY_NOW}} </h6>
                 </div>
               </div>
               <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
             </div>
-            </a>
-          </div>
-        
+          </a>
+        </div>
+
         {{/each}}
       </div>
     </div>

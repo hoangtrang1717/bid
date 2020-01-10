@@ -201,6 +201,9 @@ router.post("/product/:id", async function(req, res) {
       'SELECT U."USER_NAME", P."PRESENT_PRICE" FROM public."PRODUCT" P, public."USER" U WHERE P."PRO_ID" = $1 AND P."SELLER_ID" = U."USER_ID"',
       id
     );
+    const history = await db.load(
+      `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id}`
+    );
     res.render("product", {
       isUser: true,
       user: req.user,
@@ -210,7 +213,8 @@ router.post("/product/:id", async function(req, res) {
       product: newProduct.rows[0],
       bidder: bidder.rows[0],
       seller: seller.rows[0],
-      recommend: newProduct.rows[0].PRESENT_PRICE + newProduct.rows[0].BID_JUMP
+      recommend: newProduct.rows[0].PRESENT_PRICE + newProduct.rows[0].BID_JUMP,
+      history: history.rows
     });
   }
 });
@@ -245,6 +249,10 @@ router.get("/product/:id", async function(req, res) {
   );
   const category = await db.load('SELECT * FROM public."CATEGORY"');
 
+  const history = await db.load(
+    `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id}`
+  );
+
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
     res.render("product", {
       isUser: true,
@@ -257,7 +265,8 @@ router.get("/product/:id", async function(req, res) {
       seller: seller.rows[0],
       recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
       relativeProduct: relativeProduct.rows.splice(0, 5),
-      category: category.rows
+      category: category.rows,
+      history: history.rows
     });
   } else {
     res.render("product", {
@@ -268,7 +277,8 @@ router.get("/product/:id", async function(req, res) {
       seller: seller.rows[0],
       recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
       relativeProduct: relativeProduct.rows.splice(0, 5),
-      category: category.rows
+      category: category.rows,
+      history: history.rows
     });
   }
 });
