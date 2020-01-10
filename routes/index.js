@@ -32,9 +32,12 @@ hbs.registerHelper("formatDate", function(n) {
 });
 
 hbs.registerHelper("mask", function(n) {
-  var last5 = n.substring(n.length - 5);
-  var mask = n.substring(0, n.length - 5).replace(/./g, "*");
-  return mask + last5;
+  if (n) {
+    var last5 = n.substring(n.length - 5);
+    var mask = n.substring(0, n.length - 5).replace(/./g, "*");
+    return mask + last5;
+  }
+  return n;
 });
 
 router.get("/", async function(req, res) {
@@ -54,8 +57,7 @@ router.get("/", async function(req, res) {
       isUser: true,
       user: req.user
     });
-  }
-  else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+  } else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
     res.render("bidder", {
       endSoon: endSoon.rows.slice(0, 5),
       highBid: highBid.rows.slice(0, 5),
@@ -66,8 +68,7 @@ router.get("/", async function(req, res) {
     });
     // if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
     //   res.render("admin", { user: req.user });
-  } 
-  else {
+  } else {
     res.render("home", {
       endSoon: endSoon.rows.slice(0, 5),
       highBid: highBid.rows.slice(0, 5),
@@ -112,15 +113,22 @@ router.get("/profile", async function(req, res) {
   if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
     res.render("sellerProfile", {
       isUser: true,
-      user: req.user,
+      user: req.user
     });
-  }
-  else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
-    const isJoin = await db.detail(`SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`, req.user.USER_ID)
+  } else if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    const isJoin = await db.detail(
+      `SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`,
+      req.user.USER_ID
+    );
+    const isLiked = await db.detail(
+      `SELECT * FROM public."WATCHLIST" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`,
+      req.user.USER_ID
+    );
     res.render("bidderProfile", {
       isUser: true,
       user: req.user,
-      isJoin: isJoin.rows
+      isJoin: isJoin.rows,
+      isLiked: isLiked.rows
     });
   } else {
     res.render("error", { layout: false });
@@ -136,15 +144,30 @@ router.post("/profile", async function(req, res) {
   //   });
   // }
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
-    const isJoin = await db.detail(`SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`, req.user.USER_ID)
+    const isJoin = await db.detail(
+      `SELECT * FROM public."BID_HISTORY" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`,
+      req.user.USER_ID
+    );
+    const isLiked = await db.detail(
+      `SELECT * FROM public."WATCHLIST" H, public."PRODUCT" P WHERE H."USER_ID" = $1 AND H."PRO_ID" = P."PRO_ID"`,
+      req.user.USER_ID
+    );
     const salt = await bcrypt.genSaltSync(10);
     const hash = await bcrypt.hash(req.body.password, salt);
-    await db.load(`UPDATE public."USER" SET "USER_FULLNAME" = '${req.body.fullname.toString()}', "USER_EMAIL" = '${req.body.email.toString()}', "USER_NAME" = '${req.body.username.toString()}', "USER_PASSWORD" = '${hash.toString()}'  WHERE "USER_ID" = ${req.user.USER_ID}`)
-    const user = await db.detail(`SELECT * FROM public."USER" WHERE "USER_ID" = $1 ` , req.user.USER_ID)
+    await db.load(
+      `UPDATE public."USER" SET "USER_FULLNAME" = '${req.body.fullname.toString()}', "USER_EMAIL" = '${req.body.email.toString()}', "USER_NAME" = '${req.body.username.toString()}', "USER_PASSWORD" = '${hash.toString()}'  WHERE "USER_ID" = ${
+        req.user.USER_ID
+      }`
+    );
+    const user = await db.detail(
+      `SELECT * FROM public."USER" WHERE "USER_ID" = $1 `,
+      req.user.USER_ID
+    );
     res.render("bidderProfile", {
       isUser: true,
       user: user.rows[0],
-      isJoin: isJoin.rows
+      isJoin: isJoin.rows,
+      isLiked: isLiked.rows
     });
   } else {
     res.render("error", { layout: false });
@@ -170,6 +193,12 @@ router.post("/product/:id", async function(req, res) {
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
     var bidPrice = await req.body.price;
     var buyNow = await req.body.hasOwnProperty("buyNow");
+    var like = await req.body.hasOwnProperty("like");
+    if (like) {
+      await db.load(
+        `insert into public."WATCHLIST" ("USER_ID","PRO_ID") VALUES (${req.user.USER_ID},${id})`
+      );
+    }
     var price = 0;
     let cannotBuy = false;
     let isError = false;
@@ -230,8 +259,12 @@ router.post("/product/:id", async function(req, res) {
       id
     );
     const history = await db.load(
-      `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id}`
+      `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id} and U."USER_ID" = H."USER_ID" order by H."BID_PRICE" desc`
     );
+    const liked = await db.load(
+      `select count(*) from public."WATCHLIST" where "PRO_ID" = ${id} and "USER_ID" = ${req.user.USER_ID}`
+    );
+    const isLiked = liked.rows[0].count === "0" ? false : true;
     res.render("product", {
       isUser: true,
       user: req.user,
@@ -242,7 +275,8 @@ router.post("/product/:id", async function(req, res) {
       bidder: bidder.rows[0],
       seller: seller.rows[0],
       recommend: newProduct.rows[0].PRESENT_PRICE + newProduct.rows[0].BID_JUMP,
-      history: history.rows
+      history: history.rows.splice(0, 5),
+      isLiked: isLiked
     });
   }
 });
@@ -278,10 +312,14 @@ router.get("/product/:id", async function(req, res) {
   const category = await db.load('SELECT * FROM public."CATEGORY"');
 
   const history = await db.load(
-    `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id}`
+    `select * FROM PUBLIC."BID_HISTORY" H, PUBLIC."USER" U WHERE H."PRO_ID" = ${id} and U."USER_ID" = H."USER_ID" order by H."BID_PRICE" desc`
   );
 
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    const liked = await db.load(
+      `select count(*) from public."WATCHLIST" where "PRO_ID" = ${id} and "USER_ID" = ${req.user.USER_ID}`
+    );
+    const isLiked = liked.rows[0].count === "0" ? false : true;
     res.render("product", {
       isUser: true,
       user: req.user,
@@ -294,7 +332,8 @@ router.get("/product/:id", async function(req, res) {
       recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
       relativeProduct: relativeProduct.rows.splice(0, 5),
       category: category.rows,
-      history: history.rows
+      history: history.rows.splice(0, 5),
+      isLiked: isLiked
     });
   } else {
     res.render("product", {
@@ -306,7 +345,7 @@ router.get("/product/:id", async function(req, res) {
       recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
       relativeProduct: relativeProduct.rows.splice(0, 5),
       category: category.rows,
-      history: history.rows
+      history: history.rows.splice(0, 5)
     });
   }
 });
