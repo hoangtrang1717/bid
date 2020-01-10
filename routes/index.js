@@ -242,7 +242,7 @@ router.get("/product/:id", async function(req, res) {
     product: product.rows[0],
     bidder: bidder.rows[0],
     seller: seller.rows[0],
-    recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP
+    recommend: product.rows[0].PRESENT_PRICE + product.rows[0].BID_JUMP,
     relativeProduct: relativeProduct.rows.splice(0, 5),
     category: category.rows
   });
