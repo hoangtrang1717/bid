@@ -12,6 +12,7 @@ const app = express();
 
 app.engine('hbs', exphbs({
   defaultLayout: 'main.hbs',
+  layoutsDir: __dirname + '/views/layouts/',
   helpers: {
     section: hbs_sections()
 }
