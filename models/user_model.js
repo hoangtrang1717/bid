@@ -17,7 +17,7 @@ module.exports = {
   },
   add: (username, password, email) =>
     db.add(
-      `INSERT INTO public."USER" ("USER_NAME", "USER_PASSWORD", "USER_EMAIL", "USER_TYPE") VALUES ( $1, $2, $3, 'USER')`,
+      `INSERT INTO public."USER" ("USER_NAME", "USER_PASSWORD", "USER_EMAIL", "USER_AVA", "USER_TYPE") VALUES ( $1, $2, $3,'https://i.pravatar.cc/300', 'USER')`,
       username,
       password,
       email,

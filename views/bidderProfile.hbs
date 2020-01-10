@@ -6,24 +6,6 @@
         font-family: "Cabin", sans-serif;
     }
 
-    .card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 1px solid #e7eaed;
-        border-radius: 0;
-    }
-
-    .card .card-description {
-        margin-bottom: .875rem;
-        font-weight: 400;
-        color: #76838f;
-    }
-
     .profile-header {
         height: 150px;
         width: 100%;
@@ -423,37 +405,41 @@
                     <div class="tab-pane fade show active" id="list-profile" role="tabpanel"
                         aria-labelledby="list-profile-list">
                         <h3>Thông tin cá nhân</h3>
-                        <form class="form-horizontal" role="form">
+                        <form action="/profile" method="POST" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Họ và tên:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" value="{{this.user.USER_NAME}}" type="text">
+                                    <input class="form-control" name="fullname" id="fullname"
+                                        value="{{this.user.USER_FULLNAME}}" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Email:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" value="{{this.user.USER_EMAIL}}" type="text">
+                                    <input class="form-control" name="email" id="email" value="{{this.user.USER_EMAIL}}"
+                                        type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Username:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" value="{{this.user.USER_NAME}}" type="text">
+                                    <input class="form-control" name="username" id="username"="{{this.user.USER_NAME}}"
+                                        type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Mật khẩu:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" value="" type="password">
+                                    <input class="form-control" name="password" id="password"
+                                        value="{{this.user.USER_PASSWORD}}" type="password">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{!-- <div class="form-group">
                                 <label class="col-md-3 control-label">Xác nhận mật khẩu:</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" value="" type="password">
+                                    <input class="form-control" name="repassword" id="repassword" value="" type="password">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label class="col-md-3 control-label"></label>
                                 <div class="col-md-8">
@@ -476,8 +462,33 @@
                         aria-labelledby="list-participate-list">
                         <div id="productBlock">
                             <h5>Trang cá nhân > Đã tham gia</h5>
-                            <div class="row">
-                                <div class="card-deck" id="cardDeck2"></div>
+                            <div class="container">
+                                <div class="row hidden-md-up">
+                                    {{#each this.isJoin}}
+                                    <div class="col-md-4 mt-4">
+                                        <div class="card">
+                                            <a href="/product/{{PRO_ID}}">
+                                                <img class="card-img-top img-fluid" src="{{IMG1}}" />
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{PRO_NAME}}</h5>
+                                                    <div class="priceBlock">
+                                                        <div class="priceTitle">
+                                                            <h6>Giá hiện tại:</h6>
+                                                            <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                                                        </div>
+                                                        <div class="priceText">
+                                                            <h6>Giá mua ngay:</h6>
+                                                            <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                                                        </div>
+                                                    </div>
+                                                    <small
+                                                        class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
                             </div>
 
                         </div>
