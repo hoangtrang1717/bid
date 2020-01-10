@@ -117,7 +117,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 2em;
+  margin-top: 6em;
+  margin: 3em; 
 }
 
 h5 {

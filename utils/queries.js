@@ -26,4 +26,13 @@ module.exports = {
       });
     });
   },
+  add: (sql, username, password, email) => {
+    return new Promise(function(done, fail) {
+      pool.query(sql, [username, password, email], (error, results) => {
+        if (error) {
+          fail(error);
+        } else done(results);
+      });
+    });
+  },
 };

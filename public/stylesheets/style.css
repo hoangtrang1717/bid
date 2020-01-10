@@ -39,6 +39,22 @@ body {
   font-weight: 500;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 #accordionCategory {
   width: 25%;
 }
@@ -119,6 +135,8 @@ body {
   justify-content: center;
   align-items: flex-start;
   margin: 2em;
+  margin-top: 6em;
+  
 }
 
 h5 {
@@ -130,21 +148,6 @@ h5 {
 
 h6 {
   color: black;
-}
-
-
-.card-text {
-  color: black;
-}
-
-.card .card-body .card-title {
-  color: black;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  text-align: center;
 }
 
 .priceBlock {
@@ -181,14 +184,6 @@ h6 {
   align-items: center;
 }
 
-.card {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 #productLink {
   color: transparent;
 }
@@ -197,12 +192,6 @@ h6 {
   margin-top: 2em;
   margin-bottom: 2em;
   align-self: center;
-}
-
-.card-deck {
-  justify-content: space-around;
-  align-items: stretch;
-  padding: 1em;
 }
 
 .categoryItem {
@@ -403,8 +392,29 @@ h2.active {
   border-bottom: 2px solid #243b55;
 }
 
+@media (min-width: 576px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
 
+@media (min-width: 768px) {
+  .card-columns {
+      column-count: 3;
+  }
+}
 
+@media (min-width: 992px) {
+  .card-columns {
+      column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+      column-count: 5;
+  }
+}
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
@@ -635,3 +645,4 @@ p {
   padding-top: 0px;
   padding-bottom: 5px;
 }
+

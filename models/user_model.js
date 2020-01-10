@@ -4,13 +4,25 @@ module.exports = {
   all: _ => db.load('SELECT * FROM public."USER"'),
   // add: entity => db.add(entity, "USER"),
   getByUserName: async username => {
-    const rows = await db.detail(
+
+    const user = await db.detail(
       'SELECT * FROM public."USER" WHERE "USER_NAME" = $1',
       username
     );
-    if (rows.length > 0) return rows[0];
-    return null;
+    if (user.rows.length > 0) {
+      return user.rows[0];
+    } else {
+      return null;
+    }
   },
+  add: (username, password, email) =>
+    db.add(
+      `INSERT INTO public."USER" ("USER_NAME", "USER_PASSWORD", "USER_EMAIL", "USER_TYPE") VALUES ( $1, $2, $3, 'USER')`,
+      username,
+      password,
+      email,
+    ),
+
   getSinglePro: id =>
     db.detail('select * from public."PRODUCT" where "PRO_ID" = $1', id),
   // getLikes: userID =>
