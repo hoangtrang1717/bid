@@ -1,0 +1,79 @@
+<div class="productBlock">
+    <h5>Sắp kết thúc</h5>
+    <div class="card-columns">
+        {{#each this.endSoon}}
+
+        <div class="card">
+            <a href="/product/{{PRO_ID}}">
+                <img class="card-img-top img-fluid" src={{IMG1}} />
+                <div class="card-body">
+                    <h5 class="card-title">{{PRO_NAME}}</h5>
+                    <div class="priceBlock">
+                        <div class="priceTitle">
+                            <h6>Giá hiện tại:</h6>
+                            <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                        </div>
+                        <div class="priceText">
+                            <h6>Giá mua ngay:</h6>
+                            <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                        </div>
+                    </div>
+                    <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+                </div>
+            </a>
+        </div>
+
+        {{/each}}
+    </div>
+    <h5>Số lượt ra giá cao nhất</h5>
+    <div class="card-columns">
+        {{#each this.highBid}}
+
+        <div class="card">
+            <a href="/product/{{PRO_ID}}">
+                <img class="card-img-top img-fluid" src={{IMG1}} />
+                <div class="card-body">
+                    <h5 class="card-title">{{PRO_NAME}}</h5>
+                    <div class="priceBlock">
+                        <div class="priceTitle">
+                            <h6>Giá hiện tại:</h6>
+                            <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                        </div>
+                        <div class="priceText">
+                            <h6>Giá mua ngay:</h6>
+                            <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                        </div>
+                    </div>
+                    <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+                </div>
+            </a>
+        </div>
+
+        {{/each}}
+    </div>
+    <h5>Giá cao nhất</h5>
+    <div class="card-columns">
+        {{#each this.highPrice}}
+
+        <div class="card">
+            <a href="/product/{{PRO_ID}}">
+                <img class="card-img-top img-fluid" src={{IMG1}} />
+                <div class="card-body">
+                    <h5 class="card-title">{{PRO_NAME}}</h5>
+                    <div class="priceBlock">
+                        <div class="priceTitle">
+                            <h6>Giá hiện tại:</h6>
+                            <h6 style="color: red">{{addCommas PRESENT_PRICE}} VNĐ</h6>
+                        </div>
+                        <div class="priceText">
+                            <h6>Giá mua ngay:</h6>
+                            <h6 style="color: red">{{addCommas BUY_NOW}} VNĐ</h6>
+                        </div>
+                    </div>
+                    <small class="text-muted text-center">{{moment PRO_DATE "MM-DD-YYYY"}}</small>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>

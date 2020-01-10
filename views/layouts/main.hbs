@@ -47,11 +47,26 @@
               <p class="headerTitle">Liên hệ</p>
             </a>
           </li>
+          {{#if this.isUser}}
+          <li class="nav-item avatar dropdown ml-5">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="{{this.user.USER_AVA}}" width="50px" class="rounded-circle" alt="avatar image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-secondary"
+              aria-labelledby="navbarDropdownMenuLink-5">
+              <a class="dropdown-item" href="/profile">Trang cá nhân</a>
+              <a class="dropdown-item" href="#">Yêu thích</a>
+              <a class="dropdown-item" href="/logout">Đăng xuất</a>
+            </div>
+          </li>
+          {{else}}
           <li class="ml-5">
             <button class="btn btn-outline-primary my-2 my-sm-0 p-2" type="submit" id="loginBtn"
               onclick="window.location.href='/signin'">
               Đăng nhập
             </button>
+            {{/if}}
           </li>
         </ul>
       </div>

@@ -20,15 +20,22 @@ router.get("/", async function(req, res) {
   );
   const category = await db.load('SELECT * FROM public."CATEGORY"');
   if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
-    res.render("seller");
+    res.render("seller", { 
+      isUser: true,
+      user: req.user });
   }
   if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
-    res.render("homeUser");
-  }
-  if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
-    res.render("admin");
-  }
-  else{
+    res.render("bidder", {
+      endSoon: endSoon.rows.slice(0, 5),
+      highBid: highBid.rows.slice(0, 5),
+      highPrice: highPrice.rows.slice(0, 5),
+      category: category.rows,
+      isUser: true,
+      user: req.user
+    });
+  // if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
+  //   res.render("admin", { user: req.user });
+  } else {
     res.render("home", {
       endSoon: endSoon.rows.slice(0, 5),
       highBid: highBid.rows.slice(0, 5),
@@ -36,7 +43,6 @@ router.get("/", async function(req, res) {
       category: category.rows
     });
   }
-    
 });
 
 router.get("/signin", function(req, res) {
@@ -70,9 +76,28 @@ router.get("/logout", function(req, res) {
   res.redirect("/");
 });
 
-router.get("/seller", function(req, res) {
-  res.render("seller");
-});
+router.get("/profile", async function(req, res) {
+  if (req.isAuthenticated() && req.user.USER_TYPE === "SELLER") {
+    res.render("sellerProfile",{
+      isUser: true,
+      user: req.user
+    });
+  }
+  if (req.isAuthenticated() && req.user.USER_TYPE === "USER") {
+    res.render("bidderProfile", {
+      isUser: true,
+      user: req.user
+    });
+  }
+  if (req.isAuthenticated() && req.user.USER_TYPE === "ADMIN") {
+    res.render("adminProfile", {
+      isUser: true,
+      user: req.user
+    });
+  }
+  else {
+    res.render("error", { layout: false });
+  }});
 
 router.get("/reset", function(req, res) {
   res.render("reset", { layout: false });

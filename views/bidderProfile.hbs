@@ -1,0 +1,497 @@
+{{#section 'css'}}
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Cabin:400,500&display=swap&subset=vietnamese");
+
+    body {
+        font-family: "Cabin", sans-serif;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #e7eaed;
+        border-radius: 0;
+    }
+
+    .card .card-description {
+        margin-bottom: .875rem;
+        font-weight: 400;
+        color: #76838f;
+    }
+
+    .profile-header {
+        height: 150px;
+        width: 100%;
+        position: relative;
+    }
+
+    .cover-image {
+        height: 150px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+
+
+    .user-image {
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        bottom: -50%;
+        left: 50%;
+        /* top: 50%; */
+        transform: translate(-50%, -50%);
+        z-index: 5;
+    }
+
+    .user-image img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        top: -40px;
+        border: 5px solid #777;
+    }
+
+    .profile-card .profile-content {
+        padding: 50px 20px 30px 20px;
+    }
+
+    h3 {
+        font-family: Cabin;
+        font-style: normal;
+        font-weight: 600;
+        color: #243b55;
+    }
+
+    .profile-card .profile-name {
+        font-size: 1.2rem;
+        font-family: Cabin;
+        font-style: normal;
+        font-weight: 600;
+        color: #243b55;
+        text-align: center;
+    }
+
+    .profile-card .profile-designation {
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+    }
+
+    .profile-card .profile-description {
+        padding: 10px;
+        font-size: 13px;
+        color: #777;
+        margin: 5px 0px;
+        background-color: #F1F2F3;
+        border-radius: 5px;
+    }
+
+    .profile-card ul.profile-info-list {
+        padding: 0;
+        margin: 10px 0;
+        list-style: none;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #777;
+    }
+
+
+
+
+    .profile-card ul.profile-info-list a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+
+
+    .profile-card a.profile-info-list-item {
+        margin: 10px 0;
+        padding: 15px;
+        background-color: #F1F2F3;
+        display: block;
+        -webkit-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+
+    }
+
+    .profile-card a.profile-info-list-item:hover {
+        background-color: #9E9E9E;
+        color: white;
+        -webkit-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+
+    }
+
+
+    .profile-card a.profile-info-list-item i {
+        padding: 10px;
+
+    }
+
+    ul.about {
+        list-style: none;
+        color: black;
+        padding: 0;
+    }
+
+    li.about-items {
+        margin: 10px;
+        font-size: 0.9rem;
+        /* font-family: sans-serif; */
+        /* font-weight: 400; */
+    }
+
+
+
+    li.about-items i {
+        color: #607d8b;
+    }
+
+    span.about-item-name {
+        width: 100px;
+        display: inline-flex;
+        margin-left: 10px;
+    }
+
+
+    span.about-item-detail {
+        display: inline-flex;
+        width: calc(100% - 160px);
+    }
+
+    span.about-item-detail>button {
+        margin-right: 10px;
+    }
+
+    .btn.btn-icon {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+    }
+
+    .btn.btn-rounded {
+        border-radius: 50px;
+    }
+
+    a.about-item-edit {
+        float: right;
+    }
+
+    .navbar {
+        background-color: white;
+    }
+
+    #findButton {
+        font-weight: 600;
+        background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+    }
+
+    #loginBtn {
+        border-color: #243b55;
+        color: #243b55;
+        border-width: medium;
+        font-weight: 600;
+    }
+
+    #loginBtn:hover {
+        background-color: #243b55;
+        color: white;
+    }
+
+    #detailWrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: white;
+        margin-top: 120px;
+    }
+
+    .logoContact {
+        margin-top: 30px;
+    }
+
+    .navbar .navbar-toggler-icon {
+        background-image: url("https://mdbootstrap.com/img/svg/hamburger7.svg?color=243b55");
+    }
+
+    .headerTitle {
+        font-family: Cabin;
+        font-style: normal;
+        font-weight: 600;
+        color: #243b55;
+    }
+
+    input[type=button],
+    input[type=submit],
+    input[type=reset] {
+        background-color: #243b55;
+        border: none;
+        color: white;
+        justify-content: center;
+        align-content: center;
+        font-family: "Cabin";
+    }
+
+    label {
+        color: #243b55;
+        justify-content: center;
+        align-content: center;
+        font-family: "Cabin";
+        font-weight: 600;
+    }
+
+    input .form-control {
+        color: #243b55;
+        justify-content: center;
+        align-content: center;
+        font-family: "Cabin";
+        font-weight: 600;
+    }
+
+    #list-tab {
+        color: #243b55;
+        justify-content: center;
+        align-content: center;
+        font-family: "Cabin";
+    }
+
+    .form-control {
+        color: #243b55;
+        justify-content: center;
+        align-content: center;
+        font-family: "Cabin";
+    }
+
+
+    .footerText {
+        float: left;
+    }
+
+    .footerText a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    .footerBlock {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #productBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 2em;
+    }
+
+    h5 {
+        color: #243b55;
+        margin-bottom: 2em;
+        margin-top: 2em;
+        font-weight: 600;
+    }
+
+    h6 {
+        color: black;
+    }
+
+    .card-title {
+        color: black;
+    }
+
+    .card-text {
+        color: black;
+    }
+
+    #priceBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #priceTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #priceText {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #productLink {
+        color: transparent;
+    }
+
+    .paginationNav {
+        margin-top: 2em;
+        margin-bottom: 2em;
+        align-self: center;
+    }
+
+    .card-deck {
+        justify-content: space-around;
+        align-items: stretch;
+        padding: 1em;
+    }
+
+    .categoryItem {
+        color: #243b55;
+    }
+
+    .categoryItem:hover {
+        color: #243b55;
+        text-decoration: none;
+    }
+
+    #categoryItemWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-left: 1em;
+    }
+
+    #headerItemTitle {
+        width: 100%;
+        align-items: flex-start;
+        display: flex;
+        color: #243b55;
+    }
+</style>
+{{/section}}
+<div id="detailWrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="cover-image">
+                                <img src="https://placeimg.com/640/480/any" class="img img-fluid" />
+                            </div>
+                            <div class="user-image">
+                                <img src="{{this.user.USER_AVA}}" class="img " />
+                            </div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="profile-name">{{this.user.USER_NAME}}</div>
+                            <div class="list-group" id="list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action" id="list-profile-list"
+                                    data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Trang cá
+                                    nhân</a>
+                                <a class="list-group-item list-group-item-action" id="list-like-list" data-toggle="list"
+                                    href="#list-like" role="tab" aria-controls="messages">Đã thích</a>
+                                <a class="list-group-item list-group-item-action" id="list-participate-list"
+                                    data-toggle="list" href="#list-participate" role="tab" aria-controls="settings">Đã
+                                    tham gia</a>
+                                <a class="list-group-item list-group-item-action" id="list-win-list" data-toggle="list"
+                                    href="#list-win" role="tab" aria-controls="settings">Đã thắng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-profile" role="tabpanel"
+                        aria-labelledby="list-profile-list">
+                        <h3>Thông tin cá nhân</h3>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Họ và tên:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" value="{{this.user.USER_NAME}}" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email:</label>
+                                <div class="col-lg-8">
+                                    <input class="form-control" value="{{this.user.USER_EMAIL}}" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Username:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" value="{{this.user.USER_NAME}}" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Mật khẩu:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" value="" type="password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Xác nhận mật khẩu:</label>
+                                <div class="col-md-8">
+                                    <input class="form-control" value="" type="password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label"></label>
+                                <div class="col-md-8">
+                                    <input class="btn btn-primary" value="Lưu thay đổi" type="submit">
+                                    <span></span>
+                                    <input class="btn btn-default" value="Huỷ" type="reset">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="list-like" role="tabpanel" aria-labelledby="list-like-list">
+                        <div id="productBlock">
+                            <h5>Trang cá nhân > Đã thích</h5>
+                            <div class="row">
+                                <div class="card-deck" id="cardDeck"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-participate" role="tabpanel"
+                        aria-labelledby="list-participate-list">
+                        <div id="productBlock">
+                            <h5>Trang cá nhân > Đã tham gia</h5>
+                            <div class="row">
+                                <div class="card-deck" id="cardDeck2"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-win" role="tabpanel" aria-labelledby="list-win-list">
+                        <div id="productBlock">
+                            <h5>Trang cá nhân > Đã thắng</h5>
+                            <div class="row">
+                                <div class="card-deck" id="cardDeck3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
