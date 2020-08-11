@@ -2440,10 +2440,10 @@ timed-out@^4.0.0:
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
   integrity sha1-8y6srFoXW+ol1/q1Zas+2HQe9W8=
 
-tinymce@^5.1.5:
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.1.5.tgz#08a4815bcefd33fb5f654b0b82b066f788a8ddf4"
-  integrity sha512-xl7rMhjxtDLWGXJF2ZNGv6Dxqy64HAQKSCvfcbfFuF+oJYRA1JqfNLfgS3yqG4D/V30adFWOZUv9Eng6l5BWOA==
+tinymce@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.4.0.tgz#ae9c784fd36651d4d457be844a18fc138ca4f1f3"
+  integrity sha512-b3j+cUogfOtRt07Zc6iOrOAVosm4hekLtE85lmvjH7tPH7ncAIBv/cpdre9GdfeXSz7TVIJWASVvi4hkOTTh3A==
 
 to-gfm-code-block@^0.1.1:
   version "0.1.1"
